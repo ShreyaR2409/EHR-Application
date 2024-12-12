@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "BAAUFpzgvlxkvfADC1I18HI/6BvDh9Msi7/AwoVPyNc=",
+  "Source": "EHRApi",
+  "BasePath": "_content/EHRApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,0 +1,6 @@
+@EHRApi_HostAddress = http://localhost:5280
+
+GET {{EHRApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

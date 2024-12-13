@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\1777293d-99fc-4041-860d-a4a451a2631a_user.png",
+      "PackagePath": "staticwebassets\\uploads\\1777293d-99fc-4041-860d-a4a451a2631a_user.png"
+    },
+    {
+      "Id": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\251202f7-1fe0-42c7-9efa-90adbe2d515d_female2.png",
+      "PackagePath": "staticwebassets\\uploads\\251202f7-1fe0-42c7-9efa-90adbe2d515d_female2.png"
+    },
+    {
+      "Id": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\4f96a19f-3253-4177-8fd9-60e3d40ebec5_female2.png",
+      "PackagePath": "staticwebassets\\uploads\\4f96a19f-3253-4177-8fd9-60e3d40ebec5_female2.png"
+    },
+    {
+      "Id": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\94d1c16b-98e8-4a3f-a90d-12758ccf74ed_female2.png",
+      "PackagePath": "staticwebassets\\uploads\\94d1c16b-98e8-4a3f-a90d-12758ccf74ed_female2.png"
+    },
+    {
+      "Id": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\d13eeaca-9bce-4d02-abf0-317d8dfeef4e_female.png",
+      "PackagePath": "staticwebassets\\uploads\\d13eeaca-9bce-4d02-abf0-317d8dfeef4e_female.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.EHRApi.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.EHRApi.props",
+      "PackagePath": "build\\EHRApi.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.EHRApi.props",
+      "PackagePath": "buildMultiTargeting\\EHRApi.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.EHRApi.props",
+      "PackagePath": "buildTransitive\\EHRApi.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

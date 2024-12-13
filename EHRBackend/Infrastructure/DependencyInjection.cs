@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Infrastructure.Services;
 
 namespace Infrastructure
 {
@@ -16,6 +17,8 @@ namespace Infrastructure
           IConfigurationManager configuration)
         {
             services.AddScoped<IAppDbContext, AppDbContext>();
+            services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<IJwtService, JwtService>();
 
             services.AddDbContext<AppDbContext>((provider, options) =>
             {

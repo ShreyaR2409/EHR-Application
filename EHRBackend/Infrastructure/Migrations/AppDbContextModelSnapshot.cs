@@ -22,28 +22,24 @@ namespace Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Domain.Entities.City", b =>
+            modelBuilder.Entity("Domain.Entities.Common.Country", b =>
                 {
-                    b.Property<int>("CityId")
+                    b.Property<int>("CountryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CityId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CountryId"));
 
-                    b.Property<string>("CityName")
+                    b.Property<string>("CountryName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("StateId")
-                        .HasColumnType("int");
+                    b.HasKey("CountryId");
 
-                    b.HasKey("CityId");
-
-                    b.HasIndex("StateId");
-
-                    b.ToTable("cities");
+                    b.ToTable("country");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Otp", b =>
+            modelBuilder.Entity("Domain.Entities.Common.Otp", b =>
                 {
                     b.Property<int>("OtpId")
                         .ValueGeneratedOnAdd()
@@ -65,7 +61,62 @@ namespace Infrastructure.Migrations
                     b.ToTable("otps");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Specialisation", b =>
+            modelBuilder.Entity("Domain.Entities.Common.State", b =>
+                {
+                    b.Property<int>("StateId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StateId"));
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("StateName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("StateId");
+
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("states");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Users.BloodGroup", b =>
+                {
+                    b.Property<int>("BloodGroupId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BloodGroupId"));
+
+                    b.Property<string>("BloodGroupName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("BloodGroupId");
+
+                    b.ToTable("bloodGroups");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Users.Gender", b =>
+                {
+                    b.Property<int>("GenderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GenderId"));
+
+                    b.Property<string>("GenderName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("GenderId");
+
+                    b.ToTable("gender");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Users.Specialisation", b =>
                 {
                     b.Property<int>("SpecialisationId")
                         .ValueGeneratedOnAdd()
@@ -82,23 +133,7 @@ namespace Infrastructure.Migrations
                     b.ToTable("specialisations");
                 });
 
-            modelBuilder.Entity("Domain.Entities.State", b =>
-                {
-                    b.Property<int>("StateId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StateId"));
-
-                    b.Property<string>("StateName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("StateId");
-
-                    b.ToTable("states");
-                });
-
-            modelBuilder.Entity("Domain.Entities.User", b =>
+            modelBuilder.Entity("Domain.Entities.Users.User", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
@@ -109,10 +144,14 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("BloodGroup")
+                    b.Property<int>("BloodGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("City")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CityId")
+                    b.Property<int>("CountryId")
                         .HasColumnType("int");
 
                     b.Property<DateOnly>("Dob")
@@ -126,8 +165,8 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Gender")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("GenderId")
+                        .HasColumnType("int");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -151,7 +190,7 @@ namespace Infrastructure.Migrations
                     b.Property<string>("RegistrationNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SpecialisationId")
+                    b.Property<int?>("SpecialisationId")
                         .HasColumnType("int");
 
                     b.Property<int>("StateId")
@@ -169,7 +208,11 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("UserId");
 
-                    b.HasIndex("CityId");
+                    b.HasIndex("BloodGroupId");
+
+                    b.HasIndex("CountryId");
+
+                    b.HasIndex("GenderId");
 
                     b.HasIndex("SpecialisationId");
 
@@ -178,7 +221,7 @@ namespace Infrastructure.Migrations
                     b.ToTable("users");
                 });
 
-            modelBuilder.Entity("Domain.Entities.UserType", b =>
+            modelBuilder.Entity("Domain.Entities.Users.UserType", b =>
                 {
                     b.Property<int>("UserTypeId")
                         .ValueGeneratedOnAdd()
@@ -192,23 +235,12 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("UserTypeId");
 
-                    b.ToTable("UserType");
+                    b.ToTable("userTypes");
                 });
 
-            modelBuilder.Entity("Domain.Entities.City", b =>
+            modelBuilder.Entity("Domain.Entities.Common.Otp", b =>
                 {
-                    b.HasOne("Domain.Entities.State", "State")
-                        .WithMany()
-                        .HasForeignKey("StateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("State");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Otp", b =>
-                {
-                    b.HasOne("Domain.Entities.User", "User")
+                    b.HasOne("Domain.Entities.Users.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -217,27 +249,52 @@ namespace Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Domain.Entities.User", b =>
+            modelBuilder.Entity("Domain.Entities.Common.State", b =>
                 {
-                    b.HasOne("Domain.Entities.City", "City")
+                    b.HasOne("Domain.Entities.Common.Country", "Country")
                         .WithMany()
-                        .HasForeignKey("CityId")
+                        .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Entities.Specialisation", "Specialisation")
+                    b.Navigation("Country");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Users.User", b =>
+                {
+                    b.HasOne("Domain.Entities.Users.BloodGroup", "BloodGroup")
                         .WithMany()
-                        .HasForeignKey("SpecialisationId")
+                        .HasForeignKey("BloodGroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Entities.UserType", "UserType")
+                    b.HasOne("Domain.Entities.Common.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Users.Gender", "Gender")
+                        .WithMany()
+                        .HasForeignKey("GenderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Users.Specialisation", "Specialisation")
+                        .WithMany()
+                        .HasForeignKey("SpecialisationId");
+
+                    b.HasOne("Domain.Entities.Users.UserType", "UserType")
                         .WithMany()
                         .HasForeignKey("UserTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("City");
+                    b.Navigation("BloodGroup");
+
+                    b.Navigation("Country");
+
+                    b.Navigation("Gender");
 
                     b.Navigation("Specialisation");
 

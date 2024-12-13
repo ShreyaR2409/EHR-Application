@@ -1,5 +1,6 @@
 ﻿using App.Core.Interface;
-using Domain.Entities;
+using Domain.Entities.Common;
+using Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,9 +19,13 @@ namespace Infrastructure
 
         public DbSet<User> users { get; set; }
         public DbSet<State> states { get; set; }
-        public DbSet<City> cities { get; set; }
+        //public DbSet<City> cities { get; set; }
         public DbSet<Specialisation> specialisations { get; set; }
         public DbSet<Otp> otps { get; set; }
+        public DbSet<Country> country { get; set; }
+        public DbSet<BloodGroup> bloodGroups { get; set; }      
+        public DbSet<Gender> gender { get; set; }
+        public DbSet<UserType> userTypes { get; set; }
 
         public IDbConnection GetConnection()
         {

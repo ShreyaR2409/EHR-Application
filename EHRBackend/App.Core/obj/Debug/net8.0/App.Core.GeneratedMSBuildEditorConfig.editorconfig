@@ -16,6 +16,6 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = App.Core
-build_property.ProjectDir = C:\Users\shreyaraut\Notes\Angular\EHRApplication\EHRBackend\App.Core\
+build_property.ProjectDir = E:\EHRApp\EHRBackend\App.Core\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

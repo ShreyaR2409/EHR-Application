@@ -2897,19 +2897,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\shreyaraut\\.nuget\\packages\\": {}
+    "C:\\Users\\HP\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHRBackend\\App.Core\\App.Core.csproj",
+      "projectUniqueName": "E:\\EHRApp\\EHRBackend\\App.Core\\App.Core.csproj",
       "projectName": "App.Core",
-      "projectPath": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHRBackend\\App.Core\\App.Core.csproj",
-      "packagesPath": "C:\\Users\\shreyaraut\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHRBackend\\App.Core\\obj\\",
+      "projectPath": "E:\\EHRApp\\EHRBackend\\App.Core\\App.Core.csproj",
+      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+      "outputPath": "E:\\EHRApp\\EHRBackend\\App.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\shreyaraut\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

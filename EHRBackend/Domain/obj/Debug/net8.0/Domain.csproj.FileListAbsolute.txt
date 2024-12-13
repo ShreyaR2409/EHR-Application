@@ -12,3 +12,17 @@ C:\Users\shreyaraut\Notes\Angular\EHRApplication\EHRBackend\Domain\obj\Debug\net
 C:\Users\shreyaraut\Notes\Angular\EHRApplication\EHRBackend\Domain\obj\Debug\net8.0\ref\Domain.dll
 C:\Users\shreyaraut\Notes\Angular\EHRApplication\EHRBackend\Domain\bin\Debug\net8.0\Domain.runtimeconfig.json
 C:\Users\shreyaraut\Notes\Angular\EHRApplication\EHRBackend\Domain\obj\Debug\net8.0\Domain.genruntimeconfig.cache
+E:\EHRApp\EHRBackend\Domain\bin\Debug\net8.0\Domain.deps.json
+E:\EHRApp\EHRBackend\Domain\bin\Debug\net8.0\Domain.runtimeconfig.json
+E:\EHRApp\EHRBackend\Domain\bin\Debug\net8.0\Domain.dll
+E:\EHRApp\EHRBackend\Domain\bin\Debug\net8.0\Domain.pdb
+E:\EHRApp\EHRBackend\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\EHRApp\EHRBackend\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+E:\EHRApp\EHRBackend\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+E:\EHRApp\EHRBackend\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+E:\EHRApp\EHRBackend\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+E:\EHRApp\EHRBackend\Domain\obj\Debug\net8.0\Domain.dll
+E:\EHRApp\EHRBackend\Domain\obj\Debug\net8.0\refint\Domain.dll
+E:\EHRApp\EHRBackend\Domain\obj\Debug\net8.0\Domain.pdb
+E:\EHRApp\EHRBackend\Domain\obj\Debug\net8.0\Domain.genruntimeconfig.cache
+E:\EHRApp\EHRBackend\Domain\obj\Debug\net8.0\ref\Domain.dll

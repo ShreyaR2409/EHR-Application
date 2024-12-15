@@ -1,0 +1,39 @@
+.navbar {
+  border-radius: 0px;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  color: white !important; /* White text for brand */
+}
+
+.navbar-nav .nav-link {
+  color: white !important; /* White text for nav links */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #333 !important; /* Dark text on hover */
+}
+
+.dropdown-menu {
+  border-radius: 0.5rem; /* Rounded dropdown corners */
+  background-color: #FFF; /* Dropdown background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Dropdown shadow */
+}
+
+.dropdown-item {
+  color: #333; /* Dropdown text color */
+}
+
+.dropdown-item:hover {
+  background-color: #FF8800; /* Theme hover color */
+  color: white; /* White text on hover */
+}
+
+.rounded-circle {
+  border: 2px solid white; /* Optional: Add a white border around the image */
+}
+
+.navbar-brand {
+  margin-right: 20px; /* Add space between brand and profile dropdown */
+}

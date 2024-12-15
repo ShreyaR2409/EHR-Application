@@ -1,2 +1,182 @@
-<p>login works!</p>
-<button (click)="NavigateToRegister()">Register</button>
+<body class="bg-light d-flex justify-content-center align-items-center">
+<div class="container">
+  <div *ngIf="isLoading" class="loader">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <form
+    class="border p-3 rounded-3"
+    [formGroup]="loginForm"
+    (ngSubmit)="loginSubmitted()"
+  >
+    <div class="row g-0">
+      <div class="form-heading col text-center p-2 mb-3 bg-light">
+        <h3>Login</h3>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col form-group">
+        <label for="email" class="form-label">Username</label>
+        <input
+          type="email"
+          class="form-control"
+          id="userName"
+          formControlName="userName"
+        />
+        <div
+          class="form-text text-danger"
+          *ngIf="loginForm.get('userName')?.errors?.['required'] && loginForm.get('userName')?.touched"
+        >
+          Username is required
+        </div>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col form-group">
+        <label for="password" class="form-label form-group">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          formControlName="password"
+        />
+        <div
+          class="form-text text-danger"
+          *ngIf="loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched"
+        >
+          Password is required
+        </div>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col" routerLink="/register">
+        Do not have an account?
+        <span
+          style="cursor: pointer; color: #FF5722"
+          (click)="NavigateToRegister()"
+          >Register</span
+        >
+      </div>
+
+      <div class="col text-end">
+        <span
+          style="cursor: pointer; color: #FF5722"
+          (click)="openForgotPasswordModal()"
+          >Forgot Password?</span
+        >
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 offset-3">
+        <div class="d-grid">
+          <button type="submit" class="btn btn-submit">Login</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Bootstrap Modal for Forgot Password -->
+<div
+  class="modal fade"
+  id="forgotPasswordModal"
+  tabindex="-1"
+  aria-labelledby="forgotPasswordModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title form-heading" id="forgotPasswordModalLabel">
+          Forgot Password
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form
+          [formGroup]="forgotPasswordForm"
+          (ngSubmit)="submitForgotPassword()"
+        >
+          <div class="mb-3 form-group">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              formControlName="Email"
+            />
+            <div
+              class="form-text text-danger"
+              *ngIf="
+                forgotPasswordForm.controls['Email'].invalid &&
+                forgotPasswordForm.controls['Email'].touched
+              "
+            >
+              Please enter a valid email.
+            </div>
+          </div>
+          <button type="submit" class="btn btn-submit w-100">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap Modal for OTP -->
+<div
+  class="modal fade"
+  id="otpModal"
+  tabindex="-1"
+  aria-labelledby="otpModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title form-heading" id="otpModalLabel">Enter OTP</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="otpForm" (ngSubmit)="submitOtp()">
+          <div class="mb-3  form-group">
+            <label for="otp" class="form-label">OTP</label>
+            <input
+              type="text"
+              id="otp"
+              class="form-control"
+              formControlName="otp"
+            />
+            <div
+              class="form-text text-danger"
+              *ngIf="
+                otpForm.controls['otp'].invalid &&
+                otpForm.controls['otp'].touched
+              "
+            >
+              OTP is required.
+            </div>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-submit w-100"
+          >
+            Submit OTP
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

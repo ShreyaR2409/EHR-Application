@@ -1,0 +1,33 @@
+.btn-patient {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color:  #FF5722;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btn-patient:hover{
+    background-color:  #fd4811;
+  }
+
+  .btn-provider{
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color:  #ff4810;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btn-provider:hover{
+    background-color:  #eb3a04;
+  }

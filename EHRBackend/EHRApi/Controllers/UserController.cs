@@ -1,4 +1,5 @@
 ﻿using App.Core.App.User.Command;
+using App.Core.App.User.Querys;
 using App.Core.Model.User;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -47,5 +48,39 @@ namespace EHRApi.Controllers
             var result = await _mediator.Send(new ForgetPasswordCommand { Email = Email });
            return Ok(result);
         }
+
+        [HttpGet("GetUserByUsername")]
+        public async Task<IActionResult> GetUser(string username)
+        {
+            var result = await _mediator.Send(new GetUserByUsername { UserName = username });
+            return Ok(result);
+        }
+
+        [HttpPut("UpdateUser/{id}")]
+        public async Task<IActionResult> UpdateProduct(int id, [FromForm] RegistrationDto RegistrationDto)
+        {
+
+            var result = await _mediator.Send(new UpdateUserCommand
+            {
+                UserId = id,
+                RegistrationDto = RegistrationDto
+            });
+
+            if (result == null)
+            {
+                return NotFound("User not found or update failed.");
+            }
+
+            return Ok(result);
+        }
+
+        [HttpPut("ChangePassword")]
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDto changePasswordDto)
+        {
+            var result = await _mediator.Send(new ChangePasswordCommand { ChangePassword = changePasswordDto });
+
+           return Ok(result);
+        }
+
     }
 }

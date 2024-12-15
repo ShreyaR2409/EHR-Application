@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FF8800;">
+  <a class="navbar-brand" href="#" style="margin-right: 20px;">Healthcare Platform</a> <!-- Added margin -->
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <img [src]="'https://localhost:7015' + profileImage" alt="Profile" class="rounded-circle" width="40" height="40"> <!-- Profile image -->
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+          <li><a class="dropdown-item" href="/Profile">Profile</a></li>
+          <li><a class="dropdown-item" href="/ChangePassword">Change Password</a></li>
+          <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>

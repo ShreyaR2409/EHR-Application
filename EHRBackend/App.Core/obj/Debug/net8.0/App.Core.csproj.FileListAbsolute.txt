@@ -46,3 +46,6 @@ C:\Users\shreyaraut\Notes\Angular\EHRApplication\EHR-Application\EHRBackend\App.
 C:\Users\shreyaraut\Notes\Angular\EHRApplication\EHR-Application\EHRBackend\App.Core\bin\Debug\net8.0\Domain.dll
 C:\Users\shreyaraut\Notes\Angular\EHRApplication\EHR-Application\EHRBackend\App.Core\bin\Debug\net8.0\Domain.pdb
 C:\Users\shreyaraut\Notes\Angular\EHRApplication\EHR-Application\EHRBackend\App.Core\obj\Debug\net8.0\App.Core.csproj.Up2Date
+E:\EHRApp\EHRBackend\App.Core\bin\Debug\net8.0\Domain.dll
+E:\EHRApp\EHRBackend\App.Core\bin\Debug\net8.0\Domain.pdb
+E:\EHRApp\EHRBackend\App.Core\obj\Debug\net8.0\App.Core.csproj.Up2Date

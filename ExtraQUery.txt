@@ -1,0 +1,55 @@
+insert into Gender (GenderName) values
+('Male'),
+('Female'),
+('Other')
+
+
+insert into userTypes (UserTypeName) values
+('Provider'),
+('Patient')
+
+
+insert into bloodGroups(BloodGroupName)values
+('A+'),
+('A-'),
+('B+'),
+('B-'),
+('O+'),
+('O-'),
+('AB+'),
+('AB-')
+
+
+INSERT INTO specialisations (SpecialisationName) VALUES
+('Allergist/immunologist'),
+('Anesthesiologist'),
+('Cardiologist'),
+('Dermatologist'),
+('Endocrinologist'),
+('Family physician'),
+('Gastroenterologist'),
+('Geneticist'),
+('Hematologist'),
+('Hospice and palliative medicine specialist'),
+('Infectious disease physician'),
+('Internal Medicine'),
+('Nephrologist'),
+('Neurologist'),
+('Obstetrician/gynecologist (OBGYNs)'),
+('Oncologist'),
+('Ophthalmologist'),
+('Orthopedist'),
+('Otolaryngologist'),
+('Osteopath'),
+('Pathologist'),
+('Pediatrician'),
+('Physician executive'),
+('Plastic surgeon'),
+('Podiatrist'),
+('Psychiatrist'),
+('Pulmonologist'),
+('Radiologist'),
+('Rheumatologist'),
+('Sleep medicine specialist'),
+('Surgeon'),
+('Urologist');

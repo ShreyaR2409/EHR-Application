@@ -24,7 +24,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "EcomApplication API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "EHR API", Version = "v1" });
 
     // Configure Swagger to use Bearer token authentication
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme

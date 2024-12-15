@@ -1,0 +1,157 @@
+<body class="bg-light d-flex justify-content-center align-items-center">
+
+<div class="container">
+    <div *ngIf="isLoading" class="loader">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <form class="border p-3 rounded-3 registration-form" [formGroup]="RegistrationForm" (ngSubmit)="onSubmit()">
+      <h2 class="form-heading bg-light p-2">Patient Registration</h2>
+  
+      <!-- First Name and Last Name -->
+      <div class="form-row">
+        <div class="col-md-6 form-group">
+          <label for="firstname">First Name</label>
+          <input type="text"  maxlength="15" id="firstname" class="form-control" formControlName="FirstName" placeholder="Enter your first name">
+          <small class="error-text" *ngIf="RegistrationForm.get('FirstName')?.invalid && RegistrationForm.get('FirstName')?.touched">
+            First Name is required
+          </small>
+        </div>
+        <div class="col-md-6 form-group">
+          <label for="lastname">Last Name</label>
+          <input type="text" maxlength="15" id="lastname" class="form-control" formControlName="LastName" placeholder="Enter your last name">
+          <small class="error-text" *ngIf="RegistrationForm.get('LastName')?.invalid && RegistrationForm.get('LastName')?.touched">
+            Last Name is required
+          </small>
+        </div>
+      </div>
+  
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" maxlength="35" class="form-control" formControlName="Email" placeholder="Enter your email">
+        <small class="error-text" *ngIf="RegistrationForm.get('Email')?.invalid && RegistrationForm.get('Email')?.touched">
+          A valid email is required
+        </small>
+      </div>
+  
+      <!-- Gender and Blood Group -->
+      <div class="form-row">
+        <div class="col-md-6 form-group">
+          <label for="gender">Gender</label>
+          <select id="gender" class="form-control" formControlName="GenderId">
+            <option value="" disabled>Select Gender</option>
+            <option *ngFor="let gender of genders" [value]="gender.genderId">{{ gender.genderName }}</option>
+          </select>
+          <small class="error-text" *ngIf="RegistrationForm.get('GenderId')?.invalid && RegistrationForm.get('GenderId')?.touched">
+            Gender is required
+          </small>
+        </div>
+        <div class="col-md-6 form-group">
+          <label for="bloodgroup">Blood Group</label>
+          <select id="bloodgroup" class="form-control" formControlName="BloodGroupId">
+            <option value="" disabled>Select Blood Group</option>
+            <option *ngFor="let group of bloodGroups" [value]="group.bloodGroupId">{{ group.bloodGroupName }}</option>
+          </select>
+          <small class="error-text" *ngIf="RegistrationForm.get('BloodGroupId')?.invalid && RegistrationForm.get('BloodGroupId')?.touched">
+            BloodGroup is required
+          </small>
+        </div>
+      </div>
+  
+      <!-- Date of Birth -->
+      <div class="form-row">
+      <div class="col-md-6 form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" class="form-control" formControlName="Dob" [attr.max]="todayDate">
+        <small class="error-text" *ngIf="RegistrationForm.get('Dob')?.invalid && RegistrationForm.get('Dob')?.touched">
+          Date of Birth is required
+        </small>
+      </div>
+            <!-- Phone Number -->
+      <div class="col-md-6 form-group">
+        <label for="phone">Phone Number</label>
+        <input type="number" id="phone" class="form-control" formControlName="PhoneNumber" placeholder="Enter your phone number"  (input)="validateMaxLength($event)">
+        <small class="error-text" *ngIf="RegistrationForm.get('PhoneNumber')?.invalid && RegistrationForm.get('PhoneNumber')?.touched">
+          <span *ngIf="RegistrationForm.get('PhoneNumber')?.errors?.['required']">Phone number is required</span>
+          <span *ngIf="RegistrationForm.get('PhoneNumber')?.errors?.['pattern']">Only numbers are allowed</span>
+          <span *ngIf="RegistrationForm.get('PhoneNumber')?.errors?.['minlength'] || RegistrationForm.get('PhoneNumber')?.errors?.['maxlength']">Phone number must be 10 digits long</span>
+        </small>
+      </div>
+    </div>
+
+      <!-- Address -->
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" id="address" maxlength="50" class="form-control" formControlName="Address" placeholder="Enter your address">
+        <small class="error-text" *ngIf="RegistrationForm.get('Address')?.invalid && RegistrationForm.get('Address')?.touched">
+          Address is required
+        </small>
+      </div>
+  
+      <!-- Country, State, and City -->
+      <div class="form-row">
+        <div class="col-md-4 form-group">
+          <label for="country">Country</label>
+          <select id="country" class="form-control" formControlName="CountryId" (change)="getStates($event)">
+            <option value="" disabled>Select Country</option>
+            <option *ngFor="let country of countries" [value]="country.countryId">{{ country.countryName }}</option>
+          </select>
+          <small class="error-text" *ngIf="RegistrationForm.get('CountryId')?.invalid && RegistrationForm.get('CountryId')?.touched">
+            Country is required
+          </small>
+        </div>
+        <div class="col-md-4 form-group">
+          <label for="state">State</label>
+          <select id="state" class="form-control" formControlName="StateId">
+            <option value="" disabled>Select State</option>
+            <option *ngFor="let state of states" [value]="state.stateId">{{ state.stateName }}</option>
+          </select>
+          <small class="error-text" *ngIf="RegistrationForm.get('StateId')?.invalid && RegistrationForm.get('StateId')?.touched">
+            State is required
+          </small>
+        </div>
+      </div>
+  
+      <!-- Pin Code and City in the same row -->
+      <div class="form-row">
+        <div class="col-md-6 form-group">
+          <label for="pincode">Pin Code</label>
+          <input type="number" id="pincode" class="form-control" formControlName="PinCode" placeholder="Enter your pin code">
+          <small class="error-text" *ngIf="RegistrationForm.get('PinCode')?.invalid && RegistrationForm.get('PinCode')?.touched">
+            Pin Code is required
+          </small>
+        </div>
+        <div class="col-md-6 form-group">
+          <label for="city">City</label>
+          <input type="text" id="city" maxlength="15" class="form-control" formControlName="City" placeholder="Enter your city">
+          <small class="error-text" *ngIf="RegistrationForm.get('City')?.invalid && RegistrationForm.get('City')?.touched">
+            City is required
+          </small>
+        </div>
+      </div>
+  
+      <!-- Profile Image -->
+      <div class="form-group">
+        <label for="profileImage">Profile Image</label>
+        <input type="file" id="profileImage" class="form-control" (change)="onFileSelected($event)">
+        <small class="error-text" *ngIf="RegistrationForm.get('ProfileImage')?.invalid && RegistrationForm.get('ProfileImage')?.touched">
+          Profile Image is required
+        </small>
+        
+      </div>
+      <div class="row mb-3">
+        <div class="col text-center">
+          Already have an account? <a routerLink="/Login" class="text-primary">Login</a>
+        </div>
+      </div>
+  
+      <!-- Submit Button -->
+      <div class="form-actions">
+        <button type="submit" class="btn-submit" [disabled]="isLoading">Register</button>
+
+      </div>      
+    </form>
+  </div>
+  </body>

@@ -1,0 +1,79 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+  <div *ngIf="isLoading" class="loader-overlay">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <form class="border p-4 rounded-3 shadow-sm" [formGroup]="AppointmentForm" (ngSubmit)="onSubmit()">
+    <h4 class="text-center mb-4">Add Appointment</h4>
+
+    <!-- Provider Selection -->
+    <div class="row mb-3">
+      <div class="col-md-6 mb-3">
+        <label for="Provider" class="form-label">Provider</label>
+        <select id="Provider" class="form-select" >
+          <option value="" disabled>Select Provider</option>
+          <option *ngFor="let Provider of providerList" [value]="Provider.userId">
+            {{ Provider.firstName }} {{ Provider.lastName }}
+          </option>
+        </select>
+        <div *ngIf="AppointmentForm.get('ProviderId')?.invalid && AppointmentForm.get('ProviderId')?.touched" class="invalid-feedback">
+          Provider is required
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="Specialisation" class="form-label">Specialisation</label>
+        <select id="Specialisation" class="form-select" >
+          <option value="" disabled>Select Specialisation</option>
+          <option *ngFor="let specialisation of specialisations" [value]="specialisation.specialisationId">
+            {{ specialisation.specialisationName }}
+          </option>
+        </select>
+        <div *ngIf="AppointmentForm.get('specialisationId')?.invalid && AppointmentForm.get('specialisationId')?.touched" class="invalid-feedback">
+          Specialisation is required
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6 mb-3">
+        <label for="appointmentdate" class="form-label">Appointment Date</label>
+        <input type="date" id="appointmentdate" class="form-control" formControlName="AppointmentDate" [min]="minDate">
+        <div *ngIf="AppointmentForm.get('AppointmentDate')?.invalid && AppointmentForm.get('AppointmentDate')?.touched" class="invalid-feedback">
+          Appointment Date is required
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="appointmenttime" class="form-label">Appointment Time</label>
+        <input type="time" id="appointmenttime" class="form-control" formControlName="AppointmentTime" [min]="minTime">
+        <div *ngIf="AppointmentForm.get('AppointmentTime')?.invalid && AppointmentForm.get('AppointmentTime')?.touched" class="invalid-feedback">
+          Appointment Time is required
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="ChiefComplaint" class="form-label">Chief Complaint</label>
+      <textarea id="ChiefComplaint" class="form-control" formControlName="ChiefComplaint"></textarea>
+      <div *ngIf="AppointmentForm.get('ChiefComplaint')?.invalid && AppointmentForm.get('ChiefComplaint')?.touched" class="invalid-feedback">
+        Chief Complaint is required
+      </div>
+    </div>
+
+    <!-- Stripe Payment Section -->
+    <div class="mb-3">
+      <label for="card-element" class="form-label">Payment Information</label>
+      <div id="card-element"></div>
+      <div *ngIf="isLoading" class="invalid-feedback">Processing payment...</div>
+    </div>
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-submit w-100" [disabled]="AppointmentForm.invalid || isLoading">
+        Add Appointment
+      </button>
+    </div>
+  </form>
+</div>

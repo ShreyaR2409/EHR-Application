@@ -9,6 +9,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { AuthGuard } from './guard/auth.guard';
+import { AddAppointmentComponent } from './components/add-appointment/add-appointment.component';
+import { AddAppointmentPatientComponent } from './components/add-appointment-patient/add-appointment-patient.component';
 export const routes: Routes = [
     {
         path: 'landing',
@@ -45,6 +47,14 @@ export const routes: Routes = [
     {
         path: 'ChangePassword',
         component: ChangePasswordComponent
+    },
+    {
+        path: 'AddAppointment',
+        component: AddAppointmentComponent
+    },
+    {
+        path: 'AddAppointmentPatient',
+        component: AddAppointmentPatientComponent
     },
     {
         path: '',

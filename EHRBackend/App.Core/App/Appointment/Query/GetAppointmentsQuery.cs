@@ -27,11 +27,19 @@ namespace App.Core.App.Appointment.Query
         {
             if (request.Role == "Patient")
             {
-                return await _context.Set<Domain.Entities.Appointments.Appointment>().Where(a => a.PatientId == request.UserId).ToListAsync(cancellationToken);
+                return await _context.Set<Domain.Entities.Appointments.Appointment>()
+                    .Where(a => a.PatientId == request.UserId)
+                    .OrderByDescending(a => a.AppointmentDate)
+                    .ThenByDescending(a => a.AppointmentTime)
+                    .ToListAsync(cancellationToken);
             }
             else if (request.Role == "Provider")
             {
-                return await _context.Set<Domain.Entities.Appointments.Appointment>().Where(a => a.ProviderId == request.UserId && a.AppointmentDate >= DateTime.Now.Date).ToListAsync(cancellationToken);
+                return await _context.Set<Domain.Entities.Appointments.Appointment>()
+                    .Where(a => a.ProviderId == request.UserId && a.AppointmentDate >= DateTime.Now.Date)
+                    .OrderByDescending(a => a.AppointmentDate)
+                    .ThenByDescending(a => a.AppointmentTime)
+                    .ToListAsync(cancellationToken);
             }
             return new List<Domain.Entities.Appointments.Appointment>();
         }

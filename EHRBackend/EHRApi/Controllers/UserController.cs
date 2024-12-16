@@ -1,5 +1,6 @@
 ﻿using App.Core.App.User.Command;
 using App.Core.App.User.Querys;
+using App.Core.App.Utility.Query;
 using App.Core.Model.User;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -82,5 +83,32 @@ namespace EHRApi.Controllers
            return Ok(result);
         }
 
+        [HttpGet("PatientList")]
+        public async Task<IActionResult> GetPatients()
+        {
+            var result = await _mediator.Send(new GetAllPatient());
+            return Ok(result);
+        }
+
+        [HttpGet("ProviderList")]
+        public async Task<IActionResult> GetProviders()
+        {
+            var result = await _mediator.Send(new GetAllProvider());
+            return Ok(result);
+        }
+
+        [HttpGet("ProviderBySpecialisation")]
+        public async Task<IActionResult> GetStates(int id)
+        {
+            var result = await _mediator.Send(new GetProviderBySpecialisationId { Id = id });
+            return Ok(result);
+        }
+
+        [HttpGet("AllSpecialisation")]
+        public async Task<IActionResult> GetSpecialisation()
+        {
+            var result = await _mediator.Send(new GetAllSpecialisation());
+            return Ok(result);
+        }
     }
 }

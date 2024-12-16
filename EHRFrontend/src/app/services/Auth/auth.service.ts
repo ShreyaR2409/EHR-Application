@@ -55,11 +55,27 @@ export class AuthService {
   }
 
   public changePassword(requestBody: { UserId: string, NewPassword: string }): Observable<any> {
-    return this.http.post(`${this.url}/ChangePassword`, requestBody); 
+    return this.http.put(`${this.url}/ChangePassword`, requestBody); 
   }
 
   public getUserByUsername(username: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.url}/GetUserByUsername?username=${username}`);
+  }
+
+  public getAllPatient(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.url}/PatientList`);
+  }
+
+  public getAllSpecialisation(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.url}/AllSpecialisation`);
+  }
+
+  public getAllProvider(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.url}/ProviderList`);
+  }
+
+  public getAllProviderBySpecialisationId(Id : number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.url}/ProviderBySpecialisation?id=${Id}`);
   }
 
   private decodeToken(token: string): any {

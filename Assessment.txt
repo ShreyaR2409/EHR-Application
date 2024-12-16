@@ -31,6 +31,8 @@ There should be a botton for logout and token should ge cleared in logout.
  
 There should be an option to show user's profile image in right side of header on click of it user profile and change password options should be there, user should be able to update their profile with all the mentioned field.
 Onclick of change password one popup should be there asking new password and confirm new password both should be same
+
+
 When patient Login in the application they are able to see the Appointment listing, if he has any appointment scheduled else it will be Empty
 - Add Appointment button: When patient clicks on the button new Page will open where Add Appointment form will be there with following field:
 Speciality(dropdown coming from master)

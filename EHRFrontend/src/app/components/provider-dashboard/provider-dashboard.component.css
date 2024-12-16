@@ -1,0 +1,16 @@
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  /* Badge styles for status */
+  .badge {
+    font-size: 0.9rem;
+    padding: 0.5em 1em;
+    color: white;
+  }
+  
+  /* Buttons for actions */
+  button {
+    margin-right: 10px;
+  }

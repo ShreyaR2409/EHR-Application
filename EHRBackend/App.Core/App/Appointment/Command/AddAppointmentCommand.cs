@@ -80,7 +80,7 @@ namespace App.Core.App.Appointment.Command
             await _emailService.SendEmailAsync(provider.Email, subject, providerBody);
 
             return new
-            {
+            {   
                 status = 200,
                 message = "Appointment Scheduled Successfully"
             };

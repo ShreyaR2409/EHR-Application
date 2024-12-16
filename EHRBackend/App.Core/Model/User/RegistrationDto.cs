@@ -13,7 +13,7 @@ namespace App.Core.Model.User
     {
         public required string FirstName { get; set; }
         public required string LastName { get; set; }
-        public DateOnly Dob { get; set; }
+        public DateTime Dob { get; set; }
         public required string Email { get; set; }
         public int GenderId { get; set; }
         public int BloodGroupId { get; set; }

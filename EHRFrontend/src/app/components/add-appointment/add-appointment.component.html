@@ -1,0 +1,61 @@
+<div class="container mt-4">
+  <!-- Loader Spinner -->
+  <div *ngIf="isLoading" class="loader-overlay">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Appointment Form -->
+  <form class="border p-4 rounded-3 shadow-sm" [formGroup]="AppointmentForm" (ngSubmit)="onSubmit()">    
+    <h4 class="text-center mb-4">Add Appointment</h4>
+
+    <!-- Patient Selection -->
+    <div class="form-row mb-3">
+      <div class="col-md-6 form-group">
+        <label for="Patient">Patient</label>
+        <select id="Patient" class="form-control" formControlName="PatientId">
+          <option value="" disabled>Select Patient</option>
+          <option *ngFor="let Patient of patientList" [value]="Patient.userId">
+            {{ Patient.firstName }} {{ Patient.lastName }}
+          </option>
+        </select>
+        <small class="error-text" *ngIf="AppointmentForm.get('PatientId')?.invalid && AppointmentForm.get('PatientId')?.touched">
+          Patient is required
+        </small>
+      </div>  
+    </div>
+
+    <!-- Appointment Date and Time -->
+    <div class="form-row mb-3">
+      <div class="col-md-6 form-group">
+        <label for="appointmentdate">Appointment Date</label>
+        <input type="date" id="appointmentdate" class="form-control" formControlName="AppointmentDate" [min]="minDate">
+        <small class="error-text" *ngIf="AppointmentForm.get('AppointmentDate')?.invalid && AppointmentForm.get('AppointmentDate')?.touched">
+          Appointment Date is required
+        </small>
+      </div>
+      <div class="col-md-6 form-group">
+        <label for="appointmenttime">Appointment Time</label>
+        <input type="time" id="appointmenttime" class="form-control" formControlName="AppointmentTime" [min]="minTime">
+        <small class="error-text" *ngIf="AppointmentForm.get('AppointmentTime')?.invalid && AppointmentForm.get('AppointmentTime')?.touched">
+          Appointment Time is required
+        </small>
+      </div>
+    </div>
+
+    <!-- Chief Complaint -->
+    <div class="form-group mb-3">
+      <label for="ChiefComplaint">Chief Complaint</label>
+      <textarea type="text" id="ChiefComplaint" class="form-control" formControlName="ChiefComplaint"></textarea>
+      <small class="error-text" *ngIf="AppointmentForm.get('ChiefComplaint')?.invalid && AppointmentForm.get('ChiefComplaint')?.touched">
+        Chief Complaint is required
+      </small>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="text-center">
+      <button type="submit" class="btn-submit">Add Appointment</button>
+    </div>
+  </form>
+</div>

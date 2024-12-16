@@ -1,1 +1,51 @@
 <app-navbar></app-navbar>
+<div class="container mt-4">
+  <!-- Loader Spinner -->
+  <div *ngIf="isLoading" class="loader-overlay">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <button routerLink="/AddAppointment">Add Appointment</button>
+  <!-- Appointment List -->
+  <h4 class="text-center mb-4">Appointment List</h4>
+  <div *ngIf="appointments.length === 0 && !isLoading" class="alert alert-warning text-center">
+    No Appointment Found
+  </div>
+  <!-- Appointment Table -->
+  <table class="table table-striped" *ngIf="appointments.length > 0">
+    <thead>
+      <tr>
+        <th>Sr No.</th>
+        <!-- <th>Patient Name</th> -->
+        <th>Appointment Date</th>
+        <th>Appointment Time</th>
+        <th>Chief Complaint</th>
+        <th>Status</th>
+        <th>Fee</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let appointment of appointments; let i = index">
+        <td>{{ i + 1 }}</td>
+        <!-- <td>{{ appointment.patient ? appointment.patient.firstName + ' ' + appointment.patient.lastName : 'N/A' }}</td> -->
+        <td>{{ appointment.appointmentDate | date:'mediumDate' }}</td>
+        <td>{{ appointment.appointmentTime  }}</td>
+        <td>{{ appointment.chiefComplaint }}</td>
+        <td>
+          <span [ngClass]="getStatusClass(appointment.appointmentStatus)">
+            {{ appointment.appointmentStatus }}
+          </span>
+        </td>
+        <td>{{ appointment.fee | currency }}</td>
+        <td>
+          <!-- Example action buttons -->
+          <!-- <button class="btn btn-primary btn-sm" (click)="viewDetails(appointment)">Go To Appointment</button> -->
+          <button class="btn btn-warning btn-sm" (click)="rescheduleAppointment(appointment)">Go To Appointment</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

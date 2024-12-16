@@ -359,7 +359,6 @@ C:\Users\shreyaraut\Notes\Angular\EHRApplication\EHR-Application\EHRBackend\EHRA
 C:\Users\shreyaraut\Notes\Angular\EHRApplication\EHR-Application\EHRBackend\EHRApi\obj\Debug\net8.0\EHRApi.AssemblyInfoInputs.cache
 C:\Users\shreyaraut\Notes\Angular\EHRApplication\EHR-Application\EHRBackend\EHRApi\obj\Debug\net8.0\EHRApi.AssemblyInfo.cs
 C:\Users\shreyaraut\Notes\Angular\EHRApplication\EHR-Application\EHRBackend\EHRApi\obj\Debug\net8.0\EHRApi.csproj.CoreCompileInputs.cache
-C:\Users\shreyaraut\Notes\Angular\EHRApplication\EHR-Application\EHRBackend\EHRApi\obj\Debug\net8.0\EHRApi.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\shreyaraut\Notes\Angular\EHRApplication\EHR-Application\EHRBackend\EHRApi\obj\Debug\net8.0\EHRApi.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\shreyaraut\Notes\Angular\EHRApplication\EHR-Application\EHRBackend\EHRApi\obj\Debug\net8.0\EHRApi.sourcelink.json
 C:\Users\shreyaraut\Notes\Angular\EHRApplication\EHR-Application\EHRBackend\EHRApi\obj\Debug\net8.0\EHRApi.dll
@@ -542,3 +541,6 @@ E:\EHRApp\EHRBackend\EHRApi\bin\Debug\net8.0\BCrypt.Net-Next.dll
 E:\EHRApp\EHRBackend\EHRApi\bin\Debug\net8.0\Dapper.dll
 E:\EHRApp\EHRBackend\EHRApi\bin\Debug\net8.0\Mapster.dll
 E:\EHRApp\EHRBackend\EHRApi\bin\Debug\net8.0\Mapster.Core.dll
+C:\Users\shreyaraut\Notes\Angular\EHRApplication\EHR-Application\EHRBackend\EHRApi\obj\Debug\net8.0\EHRApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\shreyaraut\Notes\Angular\EHRApplication\EHR-Application\EHRBackend\EHRApi\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\shreyaraut\Notes\Angular\EHRApplication\EHR-Application\EHRBackend\EHRApi\bin\Debug\net8.0\Stripe.net.dll

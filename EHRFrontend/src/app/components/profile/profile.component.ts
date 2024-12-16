@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import{Modal} from 'bootstrap';
 import {NavbarComponent} from '../navbar/navbar.component'; 
-import { AuthService } from '../../services/Auth/auth.service'; // Adjust path as needed
-// import { ToastrService } from 'ngx-toastr'; // For notifications (optional)
+import { AuthService } from '../../services/Auth/auth.service';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule,FormsModule, NavbarComponent],
+  imports: [CommonModule,FormsModule, NavbarComponent, ReactiveFormsModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
-export class ProfileComponent{
+export class ProfileComponent {
   username: string;
   user: any = {
     FirstName: '',
@@ -40,6 +39,17 @@ export class ProfileComponent{
     });
   }
 
+  get formattedDob(): string {
+    if (this.user.Dob) {
+      const date = new Date(this.user.Dob);
+      const year = date.getFullYear();
+      const month = ('0' + (date.getMonth() + 1)).slice(-2); // Months are zero-based
+      const day = ('0' + date.getDate()).slice(-2); // Ensure two digits
+      return `${year}-${month}-${day}`;
+    }
+    return '';
+  }
+
   toggleEditMode() {
     const modalElement = document.getElementById('editProfileModal');
     if (modalElement) {
@@ -61,9 +71,10 @@ export class ProfileComponent{
     formData.append('LastName', this.user.LastName);
     formData.append('Email', this.user.Email);
     formData.append('UserTypeId', this.user.UserTypeId.toString());
-    formData.append('Dob', this.user.Dob);
+    formData.append('Dob', this.user.formattedDob);
     formData.append('PhoneNumber', this.user.PhoneNumber);
     formData.append('Address', this.user.Address);
+    formData.append('City', this.user.City);
     formData.append('Pincode', this.user.Pincode);
     formData.append('CountryId', this.user.CountryId.toString());
     formData.append('StateId', this.user.StateId.toString());
@@ -72,7 +83,7 @@ export class ProfileComponent{
       formData.append('ProfileImage', this.user.ProfileImage, this.user.ProfileImage.name);
     }
 
-    this.authService.updateUser(this.user.id, formData).subscribe(
+    this.authService.updateUser(this.user.UserId, formData).subscribe(
       (response) => {
         console.log('Profile updated successfully', response);
 

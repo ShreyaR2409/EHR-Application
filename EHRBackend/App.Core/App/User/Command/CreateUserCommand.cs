@@ -69,7 +69,7 @@ namespace App.Core.App.User.Command
             return response;
         }
 
-        private async Task<string> GenerateUsernameAsync(string firstname, string lastname, DateOnly dob, int UserType)
+        private async Task<string> GenerateUsernameAsync(string firstname, string lastname, DateTime dob, int UserType)
         {
             string dobFormatted = dob.ToString("ddMMyy");
             string baseUsername;

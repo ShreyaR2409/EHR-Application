@@ -1,18 +1,14 @@
 <app-navbar></app-navbar>
-
 <div class="profile-container">
   <h2 class="profile-heading">User Profile</h2>
   <div class="profile-card">
     <div class="profile-image-container">
       <img
-        *ngIf="user.ProfileImage; else defaultImage"
+        *ngIf="user.ProfileImage"
         [src]="'https://localhost:7015' + user.ProfileImage"
         alt="Profile Picture"
         class="profile-image"
       />
-      <ng-template #defaultImage>
-        <img src="assets/default-profile.png" alt="Default Profile" class="profile-image" />
-      </ng-template>
     </div>
 
     <div class="profile-details">
@@ -24,7 +20,7 @@
 
       <div class="button-group">
         <button class="btn btn-primary" (click)="toggleEditMode()">Edit Profile</button>
-        <button class="btn btn-secondary" (click)="Logout()">Logout</button>
+        <button class="btn btn-danger" (click)="Logout()">Logout</button>
       </div>
     </div>
   </div>
@@ -62,7 +58,7 @@
 
             <div class="form-group">
               <label for="dob">Date of Birth</label>
-              <input [(ngModel)]="user.Dob" name="dob" class="form-control" type="date" required />
+              <input [(ngModel)]="user.formattedDob" [value]="formattedDob" name="dob" class="form-control" type="date" required />
             </div>
 
             <div class="form-group">
@@ -74,15 +70,19 @@
               <label for="address">Address</label>
               <input [(ngModel)]="user.Address" name="address" class="form-control" />
             </div>
-
+            <div class="form-group">
+              <label for="city">City</label>
+              <input [(ngModel)]="user.City" name="city" class="form-control" />
+            </div>
+            
             <div class="form-group">
               <label for="profileimage">Profile Image</label>
-              <input type="file" (change)="onFileChange($event)" accept="image/*" class="form-control" />
+              <input type="file"  (change)="onFileChange($event)" accept="image/*" class="form-control" />
             </div>
 
             <div class="modal-footer">
-              <button class="btn btn-success" type="submit">Save Changes</button>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              <button class="btn btn-primary" type="submit">Save Changes</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
                 Cancel
               </button>
             </div>

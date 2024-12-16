@@ -18,8 +18,12 @@ export class AppointmentService {
     return this.http.get(`${this.url}/user/${userId}?role=${role}`);
   }
 
-  updateAppointmentStatus(id: number, status: string): Observable<any> {
-    return this.http.put(`${this.url}/UpdateAppointment`, { status });
+  updateAppointmentStatus(status: any): Observable<any> {
+    return this.http.put(`${this.url}/UpdateAppointment`, status);
+  }
+
+  AppointmentCompleted(id : number): Observable<any>{
+    return this.http.post(`${this.url}/MarkAsComplete?AppointmentId=${id}`,null);
   }
 
 }

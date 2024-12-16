@@ -17,6 +17,22 @@
   },
   {
     "ContainingType": "EHRApi.Controllers.AppointmentController",
+    "Method": "MarkAsComplete",
+    "RelativePath": "api/Appointment/MarkAsComplete",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "AppointmentId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EHRApi.Controllers.AppointmentController",
     "Method": "UpdateAppointment",
     "RelativePath": "api/Appointment/UpdateAppointment",
     "HttpMethod": "PUT",

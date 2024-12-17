@@ -544,3 +544,5 @@ E:\EHRApp\EHRBackend\EHRApi\bin\Debug\net8.0\Mapster.Core.dll
 C:\Users\shreyaraut\Notes\Angular\EHRApplication\EHR-Application\EHRBackend\EHRApi\obj\Debug\net8.0\EHRApi.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\shreyaraut\Notes\Angular\EHRApplication\EHR-Application\EHRBackend\EHRApi\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\shreyaraut\Notes\Angular\EHRApplication\EHR-Application\EHRBackend\EHRApi\bin\Debug\net8.0\Stripe.net.dll
+E:\EHRApp\EHRBackend\EHRApi\bin\Debug\net8.0\Newtonsoft.Json.dll
+E:\EHRApp\EHRBackend\EHRApi\bin\Debug\net8.0\Stripe.net.dll

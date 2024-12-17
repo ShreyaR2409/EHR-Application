@@ -5211,19 +5211,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\shreyaraut\\.nuget\\packages\\": {}
+    "C:\\Users\\HP\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\EHRApi.csproj",
+      "projectUniqueName": "E:\\EHRApp\\EHRBackend\\EHRApi\\EHRApi.csproj",
       "projectName": "EHRApi",
-      "projectPath": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\EHRApi.csproj",
-      "packagesPath": "C:\\Users\\shreyaraut\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\obj\\",
+      "projectPath": "E:\\EHRApp\\EHRBackend\\EHRApi\\EHRApi.csproj",
+      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+      "outputPath": "E:\\EHRApp\\EHRBackend\\EHRApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\shreyaraut\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5238,11 +5238,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\App.Core\\App.Core.csproj": {
-              "projectPath": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\App.Core\\App.Core.csproj"
+            "E:\\EHRApp\\EHRBackend\\App.Core\\App.Core.csproj": {
+              "projectPath": "E:\\EHRApp\\EHRBackend\\App.Core\\App.Core.csproj"
             },
-            "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\Infrastructure\\Infrastructure.csproj"
+            "E:\\EHRApp\\EHRBackend\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "E:\\EHRApp\\EHRBackend\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }

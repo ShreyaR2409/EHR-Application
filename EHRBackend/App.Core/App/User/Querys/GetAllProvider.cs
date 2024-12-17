@@ -46,6 +46,7 @@ namespace App.Core.App.User.Querys
                 UserTypeId = d.UserTypeId,
                 Qualification = d.Qualification,
                 SpecialisationId = d.SpecialisationId,
+                VisitingCharge = d.VisitingCharge,
                 RegistrationNumber = d.RegistrationNumber,
                 ProfileImage = d.ProfileImage,
                 PhoneNumber = d.PhoneNumber

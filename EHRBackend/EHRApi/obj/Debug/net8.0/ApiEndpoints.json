@@ -75,7 +75,13 @@
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "EHRApi.Controllers.PaymentRequest",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

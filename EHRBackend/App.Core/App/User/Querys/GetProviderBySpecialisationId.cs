@@ -48,6 +48,7 @@ namespace App.Core.App.User.Querys
                 PinCode = d.PinCode,
                 UserTypeId = d.UserTypeId,
                 Qualification = d.Qualification,
+                VisitingCharge = d.VisitingCharge,
                 SpecialisationId = d.SpecialisationId,
                 RegistrationNumber = d.RegistrationNumber,
                 ProfileImage = d.ProfileImage,

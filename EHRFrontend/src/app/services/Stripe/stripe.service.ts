@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StripeService {
+  private baseUrl = 'http://localhost:5000/api/payment'; // Backend API URL
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  // Create a payment intent on the backend
-  createPaymentIntent() {
-    return this.http.post<{ client_secret: string }>(`${environment.apiUrl}/create-payment-intent`, {}).toPromise();
+  createPaymentIntent(amount: number) {
+    return this.http.post<any>(`${this.baseUrl}/create-payment-intent`, { amount }).toPromise();
   }
 }

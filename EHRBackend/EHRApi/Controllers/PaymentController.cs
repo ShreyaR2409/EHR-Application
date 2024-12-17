@@ -18,30 +18,30 @@ namespace EHRApi.Controllers
         }
 
         [HttpPost("create-payment-intent")]
-        public IActionResult CreatePaymentIntent()
+        public IActionResult CreatePaymentIntent([FromBody] PaymentRequest request)
         {
             try
             {
                 var options = new PaymentIntentCreateOptions
                 {
-                    Amount = 2000, // Payment amount in cents
+                    Amount = request.Amount * 100, // Convert amount to cents
                     Currency = "usd",
                     PaymentMethodTypes = new List<string> { "card" }
                 };
                 var service = new PaymentIntentService();
                 PaymentIntent intent = service.Create(options);
 
-                // Log for debugging
-                Console.WriteLine($"PaymentIntent created. Client secret: {intent.ClientSecret}");
-
                 return Ok(new { client_secret = intent.ClientSecret });
             }
             catch (Exception ex)
             {
-                // Log the exception message
-                Console.WriteLine($"Error creating payment intent: {ex.Message}");
                 return BadRequest(new { message = ex.Message });
             }
         }
+    }
+
+    public class PaymentRequest
+    {
+        public int Amount { get; set; } // Amount in USD
     }
 }

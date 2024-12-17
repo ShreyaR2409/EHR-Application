@@ -62,6 +62,10 @@ export class AuthService {
     return this.http.get<any[]>(`${this.url}/GetUserByUsername?username=${username}`);
   }
 
+  public getUserById(Id: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.url}/UserName?id=${Id}`);
+  }
+
   public getAllPatient(): Observable<any[]> {
     return this.http.get<any[]>(`${this.url}/PatientList`);
   }

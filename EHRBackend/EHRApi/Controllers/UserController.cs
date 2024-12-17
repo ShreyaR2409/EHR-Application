@@ -110,5 +110,12 @@ namespace EHRApi.Controllers
             var result = await _mediator.Send(new GetAllSpecialisation());
             return Ok(result);
         }
+
+        [HttpGet("UserName")]
+        public async Task<IActionResult> GetAllUserName(int id)
+        {
+            var result = await _mediator.Send(new GetUsernameById { UserId = id });
+            return Ok(result);
+        }
     }
 }

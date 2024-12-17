@@ -144,8 +144,8 @@ export class ProviderRegistrationComponent {
   }
 
   onSubmit(): void{
-    console.log(this.RegistrationForm.status); // Should log 'VALID' or 'INVALID'
-    console.log(this.RegistrationForm.value);  // Logs the form values
+    console.log(this.RegistrationForm.status); 
+    console.log(this.RegistrationForm.value);  
     if (this.RegistrationForm.invalid) {
       this.RegistrationForm.markAllAsTouched();
       console.error('Form is invalid');

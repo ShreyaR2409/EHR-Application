@@ -5,11 +5,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class StripeService {
-  private baseUrl = 'http://localhost:5000/api/payment'; // Backend API URL
+  private baseUrl = 'https://localhost:7015/api/Payment/create-payment-intent'; // Backend API URL
 
   constructor(private http: HttpClient) {}
 
   createPaymentIntent(amount: number) {
-    return this.http.post<any>(`${this.baseUrl}/create-payment-intent`, { amount }).toPromise();
+    return this.http.post<any>(`${this.baseUrl}`, { amount }).toPromise();
   }
 }

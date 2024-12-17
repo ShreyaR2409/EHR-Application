@@ -12,6 +12,7 @@ import { AuthService } from '../../services/Auth/auth.service';
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
+
 export class ProfileComponent {
   username: string;
   user: any = {

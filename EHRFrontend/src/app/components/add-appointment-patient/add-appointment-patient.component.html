@@ -1,52 +1,51 @@
 <app-navbar></app-navbar>
+<div style="width: 60%; margin: auto;">
 <form class="border p-4 rounded-3 shadow-sm" [formGroup]="AppointmentForm" (ngSubmit)="onSubmit()">
   <h4 class="text-center mb-4">Add Appointment</h4>
 
-  <!-- Specialisation Selection -->
-  <div class="col-md-6 mb-3">
-    <label for="Specialisation" class="form-label">Specialisation</label>
-    <select
-      id="Specialisation"
-      class="form-select"
-      (change)="getProviderBySpecialisation($event)"
-    >
-      <option value="" disabled>Select Specialisation</option>
-      <option
-        *ngFor="let specialisation of specialisations"
-        [value]="specialisation.specialisationId"
+  <div class="row mb-3">
+    <!-- Specialisation -->
+    <div class="col-md-6">
+      <label for="Specialisation" class="form-label">Specialisation</label>
+      <select
+        id="Specialisation"
+        class="form-select"
+        [(ngModel)]="selectedSpecialisation"
+        (change)="getProviderBySpecialisation($event)"
       >
-        {{ specialisation.specialisationName }}
-      </option>
-    </select>
-    <div *ngIf="AppointmentForm.get('Specialisation')?.invalid && AppointmentForm.get('Specialisation')?.touched" class="invalid-feedback">
-      Specialisation is required
+        <option value="" disabled>Select Specialisation</option>
+        <option *ngFor="let specialisation of specialisations" [value]="specialisation.specialisationId">
+          {{ specialisation.specialisationName }}
+        </option>
+      </select>
     </div>
-  </div>
 
-  <!-- Provider Selection -->
-  <div class="col-md-6 mb-3">
-    <label for="Provider" class="form-label">Provider</label>
-    <select id="Provider" class="form-select" formControlName="ProviderId">
-      <option value="" disabled>Select Provider</option>
-      <option *ngFor="let provider of filteredProviderList" [value]="provider.userId">
-        {{ provider.firstName }} {{ provider.lastName }}
-      </option>
-    </select>
-    <div *ngIf="AppointmentForm.get('ProviderId')?.invalid && AppointmentForm.get('ProviderId')?.touched" class="invalid-feedback">
-      Provider is required
+    <!-- Provider -->
+    <div class="col-md-6">
+      <label for="Provider" class="form-label">Provider</label>
+      <select id="Provider" class="form-select" formControlName="ProviderId" (change)="onProviderSelect($event)">
+        <option value="" disabled>Select Provider</option>
+        <option *ngFor="let provider of filteredProviderList" [value]="provider.userId">
+          {{ provider.firstName }} {{ provider.lastName }}
+        </option>
+      </select>
+      <div *ngIf="AppointmentForm.get('ProviderId')?.invalid && AppointmentForm.get('ProviderId')?.touched" class="invalid-feedback">
+        Provider is required
+      </div>
     </div>
   </div>
 
   <!-- Appointment Date and Time -->
   <div class="row mb-3">
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6">
       <label for="appointmentdate" class="form-label">Appointment Date</label>
       <input type="date" id="appointmentdate" class="form-control" formControlName="AppointmentDate" [min]="minDate">
       <div *ngIf="AppointmentForm.get('AppointmentDate')?.invalid && AppointmentForm.get('AppointmentDate')?.touched" class="invalid-feedback">
         Appointment Date is required
       </div>
     </div>
-    <div class="col-md-6 mb-3">
+
+    <div class="col-md-6">
       <label for="appointmenttime" class="form-label">Appointment Time</label>
       <input type="time" id="appointmenttime" class="form-control" formControlName="AppointmentTime" [min]="minTime">
       <div *ngIf="AppointmentForm.get('AppointmentTime')?.invalid && AppointmentForm.get('AppointmentTime')?.touched" class="invalid-feedback">
@@ -64,19 +63,21 @@
     </div>
   </div>
 
-  <!-- Fee -->
+  <!-- Fee (Readonly with special color) -->
   <div class="mb-3">
     <label for="Fee" class="form-label">Fee</label>
-    <input type="text" id="Fee" class="form-control" formControlName="Fee" [value]="VisitingCharge">
+    <input type="text" id="Fee" class="form-control bg-light text-muted" formControlName="Fee" [value]="VisitingCharge" readonly>
   </div>
 
-  <!-- Payment -->
+  <!-- Payment Section -->
   <div class="mb-3">
     <label for="card-element" class="form-label">Card Details</label>
-    <div id="card-element"></div>
+    <div id="card-element" class="border p-2 rounded-3"></div>
   </div>
 
+  <!-- Submit Button -->
   <button type="submit" class="btn btn-primary w-100" [disabled]="isLoading">
     {{ isLoading ? 'Processing...' : 'Book Appointment' }}
   </button>
 </form>
+</div>

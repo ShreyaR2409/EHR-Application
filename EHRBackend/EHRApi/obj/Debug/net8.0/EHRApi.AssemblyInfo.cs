@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EHRApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+438d1cfbd51a0eef6892bf13ebf02d7a5d0d0fcf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fde1b5af6aab00eed2937a0e1c2c88c9b9c88fa2")]
 [assembly: System.Reflection.AssemblyProductAttribute("EHRApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EHRApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

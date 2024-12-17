@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { AuthService } from '../../services/Auth/auth.service';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AppointmentService } from '../../services/Appointments/appointment.service';
-import { Router } from '@angular/router'; 
-import { environment } from '../../environment'; 
+import { Router } from '@angular/router';
+import { environment } from '../../environment';
 import { StripeService } from '../../services/Stripe/stripe.service';
 
 declare var Stripe: any;
@@ -13,13 +13,13 @@ declare var Stripe: any;
 @Component({
   selector: 'app-add-appointment-patient',
   standalone: true,
-  imports: [NavbarComponent, ReactiveFormsModule, CommonModule],
+  imports: [NavbarComponent, ReactiveFormsModule, CommonModule, FormsModule],
   templateUrl: './add-appointment-patient.component.html',
   styleUrl: './add-appointment-patient.component.css'
 })
 export class AddAppointmentPatientComponent implements OnInit {
   providerList: any[] = [];
-  filteredProviderList: any[] = []; // List for providers filtered by selected specialisation
+  filteredProviderList: any[] = [];
   isLoading: boolean = false;
   user: any;
   VisitingCharge: any = 0;
@@ -27,6 +27,7 @@ export class AddAppointmentPatientComponent implements OnInit {
   minDate: string = '';
   minTime: string = '';
   specialisations: any[] = [];
+  selectedSpecialisation: any = null;  
 
   stripe: any;
   elements: any;
@@ -45,21 +46,24 @@ export class AddAppointmentPatientComponent implements OnInit {
     this.AppointmentForm.reset();
     this.setMinDateTime();
     this.getAllSpecialisation();
+    this.selectedSpecialisation = null;
     this.stripe = Stripe(environment.stripePublishableKey);
     this.elements = this.stripe.elements();
     this.card = this.elements.create('card');
     this.card.mount('#card-element');
+    this.AppointmentForm.get('PatientId')?.setValue(this.PatientId);
+
   }
 
   setMinDateTime() {
-    const currentDate = new Date();     
-    this.minDate = currentDate.toISOString().split('T')[0];      
+    const currentDate = new Date();
+    this.minDate = currentDate.toISOString().split('T')[0];
     currentDate.setHours(currentDate.getHours() + 1);
-    this.minTime = currentDate.toISOString().split('T')[1].slice(0, 5); 
+    this.minTime = currentDate.toISOString().split('T')[1].slice(0, 5);
   }
 
   AppointmentForm = new FormGroup({
-    PatientId: new FormControl(this.PatientId, [Validators.required]),
+    PatientId: new FormControl(""),
     ProviderId: new FormControl("", [Validators.required]),
     AppointmentDate: new FormControl("", [Validators.required]),
     AppointmentTime: new FormControl("", [Validators.required]),
@@ -72,11 +76,11 @@ export class AddAppointmentPatientComponent implements OnInit {
     this.authService.getAllProvider().subscribe({
       next: data => {
         this.providerList = data;
-        this.filteredProviderList = data; // Initially show all providers
-        if (this.providerList && this.providerList.length > 0) {
-          this.VisitingCharge = this.providerList[0].visitingCharge;
-          this.AppointmentForm.get('Fee')?.setValue(this.VisitingCharge);
-        }
+        this.filteredProviderList = data;
+        // if (this.providerList && this.providerList.length > 0) {
+        //   this.VisitingCharge = this.providerList[0].visitingCharge;
+        //   this.AppointmentForm.get('Fee')?.setValue(this.VisitingCharge);
+        // }
       }
     });
   }
@@ -87,10 +91,6 @@ export class AddAppointmentPatientComponent implements OnInit {
     this.authService.getAllProviderBySpecialisationId(selectedSpecialisationId).subscribe({
       next: (res) => {
         this.filteredProviderList = res; // Update the filtered list of providers
-        if (this.filteredProviderList && this.filteredProviderList.length > 0) {
-          this.VisitingCharge = this.filteredProviderList[0].visitingCharge;
-          this.AppointmentForm.get('Fee')?.setValue(this.VisitingCharge);
-        }
       },
       error: (err) => {
         console.error('Error fetching providers by specialisation', err);
@@ -110,16 +110,29 @@ export class AddAppointmentPatientComponent implements OnInit {
     });
   }
 
-  // Handle form submission
-  async onSubmit() {
-    if (this.AppointmentForm.invalid || this.isLoading) return;
+  onProviderSelect(event: any) {
+    const providerId = event.target.value;
+    console.log('ProviderId:', providerId);
+    console.log('Filtered Provider List:', this.filteredProviderList);
+    const selectedProvider = this.filteredProviderList.find(provider => provider.userId === Number(providerId));
+    console.log(selectedProvider);
+    if (selectedProvider) {
+      this.VisitingCharge = selectedProvider.visitingCharge;
+      this.AppointmentForm.get('Fee')?.setValue(this.VisitingCharge);
+    } else {
+      this.VisitingCharge = 0;  
+      this.AppointmentForm.get('Fee')?.setValue(this.VisitingCharge);
+    }
+  }
 
+  async onSubmit() {
+    console.log(this.PatientId);
+    console.log(this.AppointmentForm.value);
+    if (this.AppointmentForm.invalid || this.isLoading) return;
     this.isLoading = true;
     const feeAmount = this.AppointmentForm.get('Fee')?.value;
-
     try {
       const paymentIntent = await this.stripeService.createPaymentIntent(feeAmount);
-
       const { error, paymentIntent: confirmedPaymentIntent } = await this.stripe.confirmCardPayment(
         paymentIntent?.client_secret,
         {
@@ -133,7 +146,6 @@ export class AddAppointmentPatientComponent implements OnInit {
           }
         }
       );
-
       if (error) {
         console.error(error);
         this.isLoading = false;
@@ -151,10 +163,19 @@ export class AddAppointmentPatientComponent implements OnInit {
     }
   }
 
-  // Function to book appointment
+
   bookAppointment() {
     console.log('Appointment booked');
     this.isLoading = false;
     alert('Appointment successfully booked!');
+    this.appointmentService.addAppointment(this.AppointmentForm.value).subscribe({
+      next: (res) => {
+        console.log(res);
+        alert(res);
+      },
+      error: (err) => {
+        alert(err);
+      }
+    })
   }
 }

@@ -34,10 +34,8 @@ export class AddAppointmentComponent implements OnInit {
   }
 
     setMinDateTime() {
-      const currentDate = new Date();
-     
-      this.minDate = currentDate.toISOString().split('T')[0];
-      
+      const currentDate = new Date();     
+      this.minDate = currentDate.toISOString().split('T')[0];      
       currentDate.setHours(currentDate.getHours() + 1);
       this.minTime = currentDate.toISOString().split('T')[1].slice(0, 5); 
     }

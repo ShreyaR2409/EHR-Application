@@ -51,5 +51,23 @@ namespace EHRApi.Controllers
             var result = await _mediator.Send(new MarkAppointmentAsCompletedCommand { AppointmentId = AppointmentId });
             return Ok(result);
         }
+
+        [HttpPost("MarkAsCancelled")]
+        public async Task<IActionResult> MarkAsCancelled(int AppointmentId)
+        {
+            var result = await _mediator.Send(new CancelAppointmenCommand { AppointmentId = AppointmentId });
+            return Ok(result);
+        }
+
+        [HttpGet("AppointmentDetails")]
+        public async Task<IActionResult> GetAppointmentDetails(int Id)
+        {
+            var query = new GetAppointmentDetailsById
+            {
+                AppointmentId = Id
+            };
+            var appointments = await _mediator.Send(query);
+            return Ok(appointments);
+        }
     }
 }

@@ -31,8 +31,8 @@ namespace App.Core.App.Appointment.Command
 
             // Fetch the appointment with related entities
             var appointment = await _appDbContext.Set<Domain.Entities.Appointments.Appointment>()
-                .Include(a => a.Provider) // Include Provider details
-                .Include(a => a.Patient)  // Include Patient details
+                .Include(a => a.Provider) 
+                .Include(a => a.Patient) 
                 .FirstOrDefaultAsync(a => a.Id == dto.AppointmentId, cancellationToken);
 
             if (appointment == null)
@@ -44,7 +44,7 @@ namespace App.Core.App.Appointment.Command
                 };
             }
 
-            // Check if the appointment can be edited
+           
             if (appointment.AppointmentStatus == "Completed" || appointment.AppointmentDate < DateTime.UtcNow.Date)
             {
                 return new

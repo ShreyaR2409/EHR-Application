@@ -1,0 +1,10 @@
+create or alter procedure sp_getUserDetails @Id int
+as
+begin
+select  Appointments.*, users.FirstName, users.LastName, users.BloodGroupId, bloodGroups.BloodGroupName, users.ProfileImage, users.Dob, users.GenderId, gender.GenderName
+from Appointments
+left join users on Appointments.PatientId = users.UserId
+left join gender on users.GenderId = gender.GenderId
+left join bloodGroups on users.BloodGroupId = bloodGroups.BloodGroupId
+where Appointments.Id = @Id
+end

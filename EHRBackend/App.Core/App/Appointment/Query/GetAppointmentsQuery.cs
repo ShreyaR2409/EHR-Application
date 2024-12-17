@@ -1,4 +1,5 @@
 ﻿using App.Core.Interface;
+using App.Core.Model.Appointment;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace App.Core.App.Appointment.Query
 {
-    public class GetAppointmentsQuery : IRequest<List<Domain.Entities.Appointments.Appointment>>
+    public class GetAppointmentsQuery : IRequest<List<GetAppointmentDto>>
     {
         public int UserId { get; set; }
         public string Role { get; set; }
     }
-    public class GetAppointmentsQueryHandler : IRequestHandler<GetAppointmentsQuery, List<Domain.Entities.Appointments.Appointment>>
+    public class GetAppointmentsQueryHandler : IRequestHandler<GetAppointmentsQuery, List<GetAppointmentDto>>
     {
         private readonly IAppDbContext _context;
 
@@ -23,25 +24,46 @@ namespace App.Core.App.Appointment.Query
             _context = context;
         }
 
-        public async Task<List<Domain.Entities.Appointments.Appointment>> Handle(GetAppointmentsQuery request, CancellationToken cancellationToken)
+        public async Task<List<GetAppointmentDto>> Handle(GetAppointmentsQuery request, CancellationToken cancellationToken)
         {
+            IQueryable<Domain.Entities.Appointments.Appointment> query;
+
+            // Handle role-specific queries
             if (request.Role == "Patient")
             {
-                return await _context.Set<Domain.Entities.Appointments.Appointment>()
-                    .Where(a => a.PatientId == request.UserId)
-                    .OrderByDescending(a => a.AppointmentDate)
-                    .ThenByDescending(a => a.AppointmentTime)
-                    .ToListAsync(cancellationToken);
+                query = _context.Set<Domain.Entities.Appointments.Appointment>()
+                    .Where(a => a.PatientId == request.UserId);
             }
             else if (request.Role == "Provider")
             {
-                return await _context.Set<Domain.Entities.Appointments.Appointment>()
-                    .Where(a => a.ProviderId == request.UserId && a.AppointmentDate >= DateTime.Now.Date)
-                    .OrderByDescending(a => a.AppointmentDate)
-                    .ThenByDescending(a => a.AppointmentTime)
-                    .ToListAsync(cancellationToken);
+                query = _context.Set<Domain.Entities.Appointments.Appointment>()
+                    .Where(a => a.ProviderId == request.UserId && a.AppointmentDate >= DateTime.Now.Date);
             }
-            return new List<Domain.Entities.Appointments.Appointment>();
+            else
+            {
+                return new List<GetAppointmentDto>();  // Handle any other roles if necessary
+            }
+
+            // Join with the User table to get the correct name based on role
+            var appointmentsWithUserData = await query
+                .OrderByDescending(a => a.AppointmentDate)
+                .ThenByDescending(a => a.AppointmentTime)
+                .Select(a => new GetAppointmentDto
+                {
+                    Id = a.Id,
+                    PatientId = a.PatientId,
+                    ProviderId = a.ProviderId,
+                    AppointmentDate = a.AppointmentDate,
+                    AppointmentTime = a.AppointmentTime,
+                    ChiefComplaint = a.ChiefComplaint,
+                    AppointmentStatus = a.AppointmentStatus,
+                    Fee = a.Fee,
+                    FirstName = request.Role == "Patient" ? a.Provider.FirstName : a.Patient.FirstName,  // Conditional FirstName based on role
+                    LastName = request.Role == "Patient" ? a.Provider.LastName : a.Patient.LastName   // Conditional LastName based on role
+                })
+                .ToListAsync(cancellationToken);
+
+            return appointmentsWithUserData;
         }
     }
 

@@ -15,7 +15,7 @@ namespace Domain.Entities.Appointments
         public DateTime AppointmentDate { get; set; }
         public TimeSpan AppointmentTime { get; set; }
         public string ChiefComplaint { get; set; }
-        public string AppointmentStatus { get; set; } // Scheduled, Completed
+        public string AppointmentStatus { get; set; }
         public float Fee { get; set; }
 
         public User Patient { get; set; }

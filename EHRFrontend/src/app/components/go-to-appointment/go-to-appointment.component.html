@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+<div class="appointment-container">
+    <div class="appointment-header">
+      <h2>Appointment Details</h2>
+      <div class="patient-info">
+        <img [src]="'https://localhost:7015' + userDetail[0].ProfileImage" alt="Profile Image" class="profile-image"/>
+        <div class="patient-details">
+          <h3>{{ userDetail[0].FirstName }} {{ userDetail[0].LastName }}</h3>
+          <p><strong>Gender:</strong> {{ userDetail[0].GenderName }}</p>
+          <p><strong>Date of Birth:</strong> {{ userDetail[0].Dob | date: 'MMMM d, y' }}</p>
+          <p><strong>Blood Group:</strong> {{ userDetail[0].BloodGroupName }}</p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="appointment-info">
+      <h4>Appointment Information</h4>
+      <p><strong>Appointment Date:</strong> {{ userDetail[0].AppointmentDate  }}</p>
+      <p><strong>Appointment Time:</strong> {{ userDetail[0].AppointmentTime }}</p>
+      <p><strong>Status:</strong> {{ userDetail[0].AppointmentStatus }}</p>
+      <p><strong>Fee:</strong> ₹{{ userDetail[0].Fee }}</p>
+    </div>
+  
+    <div class="chief-complaint">
+      <h4>Chief Complaint</h4>
+      <p>{{ userDetail[0].ChiefComplaint }}</p>
+    </div>
+  
+    <!-- <div class="action-buttons">
+      <button (click)="confirmAppointment()" class="btn btn-primary">Confirm Appointment</button>
+      <button (click)="cancelAppointment()" class="btn btn-danger">Cancel Appointment</button>
+    </div> -->
+  <!-- </div> -->

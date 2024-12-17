@@ -18,7 +18,7 @@
     <thead>
       <tr>
         <th>Sr No.</th>
-        <!-- <th>Patient Name</th> -->
+        <th>Patient Name</th>
         <th>Appointment Date</th>
         <th>Appointment Time</th>
         <th>Chief Complaint</th>
@@ -30,8 +30,8 @@
     <tbody>
       <tr *ngFor="let appointment of appointments; let i = index">
         <td>{{ i + 1 }}</td>
-        <!-- <td>{{ appointment.patient ? appointment.patient.firstName + ' ' + appointment.patient.lastName : 'N/A' }}</td> -->
-        <td>{{ appointment.appointmentDate | date:'mediumDate' }}</td>
+        <td>{{ appointment.firstName  }} {{ appointment.lastName  }}</td>
+                <td>{{ appointment.appointmentDate | date:'mediumDate' }}</td>
         <td>{{ appointment.appointmentTime  }}</td>
         <td>{{ appointment.chiefComplaint }}</td>
         <td>
@@ -43,7 +43,7 @@
         <td>
           <!-- Example action buttons -->
           <!-- <button class="btn btn-primary btn-sm" (click)="viewDetails(appointment)">Go To Appointment</button> -->
-          <button class="btn btn-warning btn-sm" (click)="rescheduleAppointment(appointment)">Go To Appointment</button>
+          <button class="btn btn-warning btn-sm" [routerLink]="['/GoToAppointment', appointment.id]">Go To Appointment</button>
         </td>
       </tr>
     </tbody>

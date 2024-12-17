@@ -1,6 +1,5 @@
 <app-navbar></app-navbar>
 <div class="container mt-4">
-  <!-- Loader Spinner -->
   <div *ngIf="isLoading" class="loader-overlay">
     <div class="spinner-border text-primary" role="status">
       <span class="visually-hidden">Loading...</span>
@@ -8,17 +7,15 @@
   </div>
 
   <button routerLink="/AddAppointmentPatient">Add Appointment</button>
-  <!-- Appointment List -->
   <h4 class="text-center mb-4">Appointment List</h4>
   <div *ngIf="appointments.length === 0 && !isLoading" class="alert alert-warning text-center">
     No Appointment Found
   </div>
-  <!-- Appointment Table -->
   <table class="table table-striped" *ngIf="appointments.length > 0">
     <thead>
       <tr>
         <th>Sr No.</th>
-        <!-- <th>Patient Name</th> -->
+        <th>Provider Name</th>
         <th>Appointment Date</th>
         <th>Appointment Time</th>
         <th>Chief Complaint</th>
@@ -30,7 +27,7 @@
     <tbody>
       <tr *ngFor="let appointment of appointments; let i = index">
         <td>{{ i + 1 }}</td>
-        <!-- <td>{{ appointment.patient ? appointment.patient.firstName + ' ' + appointment.patient.lastName : 'N/A' }}</td> -->
+        <td>{{ appointment.firstName  }} {{ appointment.lastName  }}</td>
         <td>{{ appointment.appointmentDate | date:'mediumDate' }}</td>
         <td>{{ appointment.appointmentTime  }}</td>
         <td>{{ appointment.chiefComplaint }}</td>
@@ -41,11 +38,59 @@
         </td>
         <td>{{ appointment.fee | currency }}</td>
         <td>
-          <!-- Example action buttons -->
-          <button class="btn btn-primary btn-sm" (click)="EditDetails(appointment)">Edit</button>&nbsp;
-          <button class="btn btn-warning btn-sm" (click)="CancelAppointment(appointment)">Cancel</button>
+          <button class="btn btn-primary btn-sm" (click)="openEditModal(appointment)">Edit</button>&nbsp;
+          <button class="btn btn-warning btn-sm" (click)="openConfirmationModal(appointment)">Cancel</button>
         </td>
       </tr>
     </tbody>
   </table>
+</div>
+
+<div class="modal fade" id="editAppointmentModal" tabindex="-1" aria-labelledby="editAppointmentModalLabel" aria-hidden="true" *ngIf="isModalOpen">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editAppointmentModalLabel">Edit Appointment</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="saveChanges()">
+          <div class="mb-3">
+            <label for="appointmentDate" class="form-label">Appointment Date</label>
+            <input type="date" id="appointmentDate" class="form-control" [(ngModel)]="selectedAppointment.formattedAppointmentDate" name="appointmentDate"  [value]="formattedAppointmentDate" required />
+          </div>
+          <div class="mb-3">
+            <label for="appointmentTime" class="form-label">Appointment Time</label>
+            <input type="time" id="appointmentTime" class="form-control" [(ngModel)]="selectedAppointment.appointmentTime" name="appointmentTime" required />
+          </div>
+          <div class="mb-3"> 
+            <label for="chiefComplaint" class="form-label">Chief Complaint</label>
+            <textarea id="chiefComplaint" class="form-control" [(ngModel)]="selectedAppointment.chiefComplaint" name="chiefComplaint" rows="3" required></textarea>
+          </div>
+          <div class="mb-3 text-center">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmationModalLabel">Confirm Cancellation</h5>
+        <button type="button" class="btn-close" (click)="closeConfirmationModal()"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to cancel this appointment?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="confirmCancelAppointment()">Yes</button>
+        <button type="button" class="btn btn-secondary" (click)="closeConfirmationModal()">No</button>
+      </div>
+    </div>
+  </div>
 </div>

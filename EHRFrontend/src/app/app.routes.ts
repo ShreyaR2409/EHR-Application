@@ -11,6 +11,7 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { AuthGuard } from './guard/auth.guard';
 import { AddAppointmentComponent } from './components/add-appointment/add-appointment.component';
 import { AddAppointmentPatientComponent } from './components/add-appointment-patient/add-appointment-patient.component';
+import { GoToAppointmentComponent } from './components/go-to-appointment/go-to-appointment.component';
 export const routes: Routes = [
     {
         path: 'landing',
@@ -55,6 +56,10 @@ export const routes: Routes = [
     {
         path: 'AddAppointmentPatient',
         component: AddAppointmentPatientComponent
+    },
+    {
+        path: 'GoToAppointment/:id',
+        component: GoToAppointmentComponent
     },
     {
         path: '',

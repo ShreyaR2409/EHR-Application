@@ -34,4 +34,11 @@ export class AppointmentService {
     return this.http.get(`${this.url}/AppointmentDetails?Id=${id}`);
   }
 
+  AddSoapNote(appointmentData: any): Observable<any> {
+    return this.http.post(`${this.url}/SoapNote`, appointmentData);
+  }
+
+  getSoapNotes(appointmentId : Number): Observable<any>{
+    return this.http.get(`${this.url}/SoapNote?id=${appointmentId}`);
+  }
 }

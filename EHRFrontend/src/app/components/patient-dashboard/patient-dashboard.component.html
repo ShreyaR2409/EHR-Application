@@ -27,7 +27,7 @@
     <tbody>
       <tr *ngFor="let appointment of appointments; let i = index">
         <td>{{ i + 1 }}</td>
-        <td>{{ appointment.firstName  }} {{ appointment.lastName  }}</td>
+        <td>Dr. {{ appointment.firstName  }} {{ appointment.lastName  }}</td>
         <td>{{ appointment.appointmentDate | date:'mediumDate' }}</td>
         <td>{{ appointment.appointmentTime  }}</td>
         <td>{{ appointment.chiefComplaint }}</td>

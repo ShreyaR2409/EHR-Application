@@ -60,6 +60,11 @@ namespace App.Core.App.User.Command
                 existingUser.ProfileImage = newImagePath;
             }
 
+            //if (userDto.ProfileImage == null)
+            //{
+            //    existingUser.ProfileImage =
+            //}
+
             // Update the user in the database
             _appDbContext.Set<Domain.Entities.Users.User>().Update(existingUser);
             await _appDbContext.SaveChangesAsync(cancellationToken);

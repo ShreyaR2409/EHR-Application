@@ -39,7 +39,7 @@ export class PatientDashboardComponent implements AfterViewInit {
 
     const confirmationModalElement = document.getElementById('confirmationModal');
     if (confirmationModalElement) {
-      this.confirmationModal = new Modal(confirmationModalElement); // For the confirmation modal
+      this.confirmationModal = new Modal(confirmationModalElement);
     }
   }
 
@@ -60,20 +60,11 @@ export class PatientDashboardComponent implements AfterViewInit {
   get formattedAppointmentDate(): string {
     if (this.selectedAppointment.appointmentDate) {
       const date = new Date(this.selectedAppointment.appointmentDate);
-      return date.toISOString().split('T')[0];  // Convert to 'YYYY-MM-DD'
+      return date.toISOString().split('T')[0];
     }
     return '';
   }
 
-  // getProvider(){
-  //   this.authService.getUserById().subscribe({
-  //     next : (res)=>{
-  //       this.
-  //     }
-  //   })
-  // }
-
-  // Function to get the CSS class for appointment status
   getStatusClass(status: string): string {
     switch (status) {
       case 'Scheduled':
@@ -135,6 +126,7 @@ export class PatientDashboardComponent implements AfterViewInit {
 
   saveChanges() {
     this.selectedAppointment.appointmentId = this.selectedAppointment.id;
+    this.selectedAppointment.appointmentDate = this.selectedAppointment.formattedAppointmentDate;
     delete this.selectedAppointment.id; 
     this.appointmentService.updateAppointment(this.selectedAppointment).subscribe({
       next: (res) => {

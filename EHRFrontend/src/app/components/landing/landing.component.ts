@@ -11,10 +11,10 @@ export class LandingComponent {
   constructor(private router: Router) {}
 
   setRolePatient(){
-    sessionStorage.setItem('Role', 'Patient');
+    sessionStorage.setItem('role', 'Patient');
   }
 
   setRoleProvider(){
-    sessionStorage.setItem('Role', 'Provider');
+    sessionStorage.setItem('role', 'Provider');
   }
 }

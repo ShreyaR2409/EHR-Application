@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class StripeService {
-  private baseUrl = 'https://localhost:7015/api/Payment/create-payment-intent'; // Backend API URL
+  private baseUrl = 'https://localhost:7015/api/Payment/create-payment-intent'; 
 
   constructor(private http: HttpClient) {}
 

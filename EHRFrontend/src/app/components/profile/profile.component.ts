@@ -15,6 +15,7 @@ import { AuthService } from '../../services/Auth/auth.service';
 
 export class ProfileComponent {
   username: string;
+  todayDate = new Date().toISOString().split('T')[0]; 
   user: any = {
     FirstName: '',
     LastName: '',
@@ -44,8 +45,8 @@ export class ProfileComponent {
     if (this.user.Dob) {
       const date = new Date(this.user.Dob);
       const year = date.getFullYear();
-      const month = ('0' + (date.getMonth() + 1)).slice(-2); // Months are zero-based
-      const day = ('0' + date.getDate()).slice(-2); // Ensure two digits
+      const month = ('0' + (date.getMonth() + 1)).slice(-2);
+      const day = ('0' + date.getDate()).slice(-2); 
       return `${year}-${month}-${day}`;
     }
     return '';
@@ -72,7 +73,8 @@ export class ProfileComponent {
     formData.append('LastName', this.user.LastName);
     formData.append('Email', this.user.Email);
     formData.append('UserTypeId', this.user.UserTypeId.toString());
-    formData.append('Dob', this.user.formattedDob);
+    const dob = this.formattedDob || '';
+    formData.append('Dob', this.user.dob);
     formData.append('PhoneNumber', this.user.PhoneNumber);
     formData.append('Address', this.user.Address);
     formData.append('City', this.user.City);
@@ -80,14 +82,15 @@ export class ProfileComponent {
     formData.append('CountryId', this.user.CountryId.toString());
     formData.append('StateId', this.user.StateId.toString());
 
-    if (this.user.ProfileImage) {
-      formData.append('ProfileImage', this.user.ProfileImage, this.user.ProfileImage.name);
-    }
+    
+  if (this.user.ProfileImage instanceof Blob) {
+    formData.append('ProfileImage', this.user.ProfileImage, this.user.ProfileImage.name);
+  }
 
     this.authService.updateUser(this.user.UserId, formData).subscribe(
       (response) => {
         console.log('Profile updated successfully', response);
-
+        this.getUser();
         const modalElement = document.getElementById('editProfileModal');
         if (modalElement) {
           const modalInstance = Modal.getInstance(modalElement);

@@ -45,7 +45,9 @@ export class ProviderRegistrationComponent {
     CountryId: new FormControl("", [Validators.required]),
     City: new FormControl("", [Validators.required]),
     StateId: new FormControl("", [Validators.required]),
-    PinCode: new FormControl("", [Validators.required]),
+    PinCode: new FormControl("", [Validators.required, Validators.pattern(/^[0-9]*$/), 
+      Validators.minLength(6),      
+      Validators.maxLength(6)      ]),
     UserTypeId: new FormControl(1, [Validators.required]),
     ProfileImage: new FormControl(null, [Validators.required]),
     PhoneNumber: new FormControl("", [  Validators.required, Validators.pattern(/^[0-9]*$/), 
@@ -61,21 +63,27 @@ export class ProviderRegistrationComponent {
   validateMaxLength(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.value.length > 10) {
-      input.value = input.value.slice(0, 10); // Trim input to 10 digits
+      input.value = input.value.slice(0, 10); 
       this.RegistrationForm.get('PhoneNumber')?.setValue(input.value);
     }
   }
-  
 
+  validateMaxLengthPin(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.value.length > 6) {
+      input.value = input.value.slice(0, 6); 
+      this.RegistrationForm.get('PinCode')?.setValue(input.value);
+    }
+  }
+  
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {
       this.selectedFile = file;
       this.RegistrationForm.patchValue({ ProfileImage: file });
-      this.RegistrationForm.get('ProfileImage')?.updateValueAndValidity(); // Fix here
+      this.RegistrationForm.get('ProfileImage')?.updateValueAndValidity();
     }
-  }
-  
+  }  
 
   getGender() {
     this.utilityService.getAllGenders().subscribe({
@@ -83,7 +91,7 @@ export class ProviderRegistrationComponent {
         this.genders = data;
       },
       error: (error) => {
-
+        console.log(error);
       }
     })
   }
@@ -94,7 +102,7 @@ export class ProviderRegistrationComponent {
         this.roles = data;
       },
       error:(error)=>{
-
+        console.log(error);        
       }
     })
   }
@@ -105,7 +113,7 @@ export class ProviderRegistrationComponent {
         this.countries = data;
       },
       error:(error)=>{
-
+        console.log(error);
       }
     })
   }
@@ -116,7 +124,7 @@ export class ProviderRegistrationComponent {
         this.states = data;
       },
       error:(error)=>{
-
+        console.log(error);
       }
     })
   }
@@ -127,7 +135,7 @@ export class ProviderRegistrationComponent {
         this.specialisations = data;
       },
       error:(error)=>{
-
+        console.log(error);
       }
     })
   }
@@ -138,14 +146,12 @@ export class ProviderRegistrationComponent {
         this.bloodGroups = data;
       },
       error:(error)=>{
-
+        console.log(error);
       }
     })
   }
 
   onSubmit(): void{
-    console.log(this.RegistrationForm.status); 
-    console.log(this.RegistrationForm.value);  
     if (this.RegistrationForm.invalid) {
       this.RegistrationForm.markAllAsTouched();
       console.error('Form is invalid');
@@ -181,7 +187,7 @@ export class ProviderRegistrationComponent {
             verticalPosition: 'bottom',
             horizontalPosition: 'right',
           });
-          this.router.navigate(['/login']); 
+          this.router.navigate(['/Login']); 
         },
         error: (err) => {
           this.isLoading = false;

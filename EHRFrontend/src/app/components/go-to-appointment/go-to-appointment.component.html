@@ -1,33 +1,105 @@
 <app-navbar></app-navbar>
 <div class="appointment-container">
-    <div class="appointment-header">
-      <h2>Appointment Details</h2>
-      <div class="patient-info">
-        <img [src]="'https://localhost:7015' + userDetail[0].ProfileImage" alt="Profile Image" class="profile-image"/>
-        <div class="patient-details">
-          <h3>{{ userDetail[0].FirstName }} {{ userDetail[0].LastName }}</h3>
-          <p><strong>Gender:</strong> {{ userDetail[0].GenderName }}</p>
-          <p><strong>Date of Birth:</strong> {{ userDetail[0].Dob | date: 'MMMM d, y' }}</p>
-          <p><strong>Blood Group:</strong> {{ userDetail[0].BloodGroupName }}</p>
+  <div class="appointment-header">
+    <h2>Appointment Details</h2>
+    <div class="patient-info">
+      <img [src]="'https://localhost:7015' + userDetail[0].ProfileImage" alt="Profile Image" class="profile-image" />
+      <div class="patient-details">
+        <div style="display: flex; justify-content: space-between;">
+          <h3>
+            {{ userDetail[0].FirstName }} {{ userDetail[0].LastName }}
+          
+          </h3>
         </div>
+        <p><i class="fa-solid fa-venus-mars"></i> {{ userDetail[0].GenderName }}</p>
+        <p><i class="fa-solid fa-calendar-alt"></i> {{ userDetail[0].Dob | date: 'MMMM d, y' }}</p>
+        <p><i class="fa-solid fa-tint"></i> Blood Group: {{ userDetail[0].BloodGroupName }}</p>
       </div>
     </div>
-  
-    <div class="appointment-info">
-      <h4>Appointment Information</h4>
-      <p><strong>Appointment Date:</strong> {{ userDetail[0].AppointmentDate  }}</p>
-      <p><strong>Appointment Time:</strong> {{ userDetail[0].AppointmentTime }}</p>
-      <p><strong>Status:</strong> {{ userDetail[0].AppointmentStatus }}</p>
-      <p><strong>Fee:</strong> ₹{{ userDetail[0].Fee }}</p>
+  </div>
+
+  <div class="appointment-info">
+    <h4>Appointment Information</h4>
+    <p><i class="fa-solid fa-calendar"></i> Appointment Date: {{ userDetail[0].AppointmentDate }}</p>
+    <p><i class="fa-solid fa-clock"></i> Appointment Time: {{ userDetail[0].AppointmentTime }}</p>
+    <p><i class="fa-solid fa-check-circle"></i> Status: {{ userDetail[0].AppointmentStatus }}</p>
+    <p><i class="fa-solid fa-rupee-sign"></i> Fee: ₹{{ userDetail[0].Fee }}</p>
+  </div>
+
+  <div class="chief-complaint">
+    <h4>Chief Complaint</h4>
+    <p>{{ userDetail[0].ChiefComplaint }}</p>
+  </div>
+
+  <div class="appointment-info" *ngIf="userDetail[0].AppointmentStatus == 'Completed'">
+    <h4>Soap Notes</h4>
+    <p><i class="fa-solid fa-calendar"></i> subjective: {{ notes[0].subjective }}</p>
+    <p><i class="fa-solid fa-clock"></i> Objective: {{ notes[0].objective }}</p>
+    <p><i class="fa-solid fa-check-circle"></i> Assessment: {{ notes[0].assessment }}</p>
+    <p><i class="fa-solid fa-rupee-sign"></i> Plan: {{ notes[0].plan }}</p>
+  </div>
+
+
+  <div class="action-buttons">
+    <button *ngIf="userDetail[0].AppointmentStatus == 'Scheduled' " class="btn-complete" data-bs-toggle="modal" data-bs-target="#soapNotesModal">Mark as
+      Complete</button>
+  </div>
+</div>
+
+<div class="modal fade" id="soapNotesModal" tabindex="-1" aria-labelledby="soapNotesModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="soapNotesModalLabel">SOAP Notes</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+
+        <form [formGroup]="soapNoteForm" (ngSubmit)="submitSoapNotes()">
+
+          <div class="form-group mb-3">
+            <label for="subjective" class="form-label">Subjective</label>
+            <textarea id="subjective" formControlName="subjective" maxlength="100" class="form-control" rows="2" placeholder="Write in 10 - 15 lines" required></textarea>
+            <div class="form-text text-danger"
+              *ngIf="soapNoteForm.get('subjective')?.errors?.['required'] && soapNoteForm.get('subjective')?.touched">
+              required
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="objective" class="form-label">Objective</label>
+            <textarea id="objective" formControlName="objective" maxlength="100" class="form-control" rows="2" placeholder="Write in 10 - 15 lines" required></textarea>
+            <div class="form-text text-danger"
+              *ngIf="soapNoteForm.get('objective')?.errors?.['required'] && soapNoteForm.get('objective')?.touched">
+              required
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="assessment" class="form-label">Assessment</label>
+            <textarea id="assessment" formControlName="assessment" maxlength="100" class="form-control" rows="2" placeholder="Write in 10 - 15 lines" required></textarea>
+            <div class="form-text text-danger"
+              *ngIf="soapNoteForm.get('assessment')?.errors?.['required'] && soapNoteForm.get('assessment')?.touched">
+              required
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="plan" class="form-label">Plan</label>
+            <textarea id="plan" formControlName="plan" maxlength="100" class="form-control" rows="2" placeholder="Write in 10 - 15 lines" required></textarea>
+            <div class="form-text text-danger"
+              *ngIf="soapNoteForm.get('plan')?.errors?.['required'] && soapNoteForm.get('plan')?.touched">
+              required
+            </div>
+          </div>
+
+          <div class="form-actions d-flex justify-content-end">
+            <button type="button" class="btn btn-danger me-2" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </form>
+      </div>
     </div>
-  
-    <div class="chief-complaint">
-      <h4>Chief Complaint</h4>
-      <p>{{ userDetail[0].ChiefComplaint }}</p>
-    </div>
-  
-    <!-- <div class="action-buttons">
-      <button (click)="confirmAppointment()" class="btn btn-primary">Confirm Appointment</button>
-      <button (click)="cancelAppointment()" class="btn btn-danger">Cancel Appointment</button>
-    </div> -->
-  <!-- </div> -->
+  </div>
+</div>

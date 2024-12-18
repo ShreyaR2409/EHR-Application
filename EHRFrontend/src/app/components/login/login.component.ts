@@ -28,7 +28,7 @@ export class LoginComponent {
     private authService: AuthService,
     private snackBar: MatSnackBar
   ) {
-    this.Role = sessionStorage.getItem('Role')!;
+    this.Role = sessionStorage.getItem('role')!;
   }
 
   loginForm = new FormGroup({
@@ -75,7 +75,6 @@ export class LoginComponent {
               otpModal.show();
             }
   
-            // Show success snackbar after OTP modal is triggered
             this.snackBar.open(
               'OTP has been sent to the registered email address',
               'Close',
@@ -106,6 +105,7 @@ export class LoginComponent {
 
   submitOtp() {
     if (this.otpForm.valid && this.storedUsername) {
+      this.isLoading = true;
       const otpData = {
         otp: this.otpForm.value.otp,
         username: this.storedUsername,
@@ -113,6 +113,7 @@ export class LoginComponent {
 
       this.authService.verifyOtp(otpData).subscribe({
         next: (res) => {
+          this.isLoading = false;
           this.snackBar.open('OTP Verified Successfully!', 'Close', {
             duration: 3000,
             verticalPosition: 'bottom',
@@ -150,18 +151,36 @@ export class LoginComponent {
 
   submitForgotPassword() {
     if (this.forgotPasswordForm.valid) {
+      this.isLoading = true;
       const email = this.forgotPasswordForm.value.Email;
       this.isLoading = true;
       this.authService.forgotPassword(email).subscribe({
-        next: (res) => {
+        next: (res: any) => {
           this.isLoading = false;
-          alert('New Password has been sent to your email.');
+          const message = typeof res === 'string' ? res : res.message;
+          this.snackBar.open(
+            message,
+            'Close',
+            {
+              duration: 3000,
+              verticalPosition: 'top',
+              horizontalPosition: 'right',
+            }
+          );
           this.closeForgotPasswordModal();
         },
         error: (err) => {
           this.isLoading = false;
           console.error('Error during password reset', err);
-          alert('An error occurred. Please try again later.');
+          this.snackBar.open(
+            'Error during password reset. Please try again.',
+            'Close',
+            {
+              duration: 3000,
+              verticalPosition: 'top',
+              horizontalPosition: 'right',
+            }
+          );
         },
       });
     } else {

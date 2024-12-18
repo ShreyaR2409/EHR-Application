@@ -15,14 +15,28 @@ export class ChangePasswordComponent {
   newPassword: string = '';
   confirmPassword: string = '';
   passwordsMismatch: boolean = false;
+  invalidPassword: boolean = false;
   userId: string = sessionStorage.getItem('id') || ''; 
   constructor(private authService: AuthService, private router: Router) {}
 
+  validatePassword(password: string): boolean {
+    const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/; 
+    return passwordPattern.test(password);
+  }
+
   onSubmit() {
+    this.passwordsMismatch = false;
+    this.invalidPassword = false;
     if (this.newPassword !== this.confirmPassword) {
       this.passwordsMismatch = true;
       return;
     }
+
+    if (!this.validatePassword(this.newPassword)) {
+      this.invalidPassword = true;
+      return;
+    }
+
 
     const requestBody = {
       UserId: this.userId,  

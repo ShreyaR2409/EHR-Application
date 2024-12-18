@@ -5,11 +5,11 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { CommonModule } from '@angular/common';
 import { AppointmentService } from '../../services/Appointments/appointment.service';
 import { Router } from '@angular/router'; 
-
+import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-add-appointment',
   standalone: true,
-  imports: [NavbarComponent, ReactiveFormsModule, CommonModule],
+  imports: [NavbarComponent, ReactiveFormsModule, CommonModule, MatSnackBarModule],
   templateUrl: './add-appointment.component.html',
   styleUrl: './add-appointment.component.css'
 })
@@ -24,7 +24,7 @@ export class AddAppointmentComponent implements OnInit {
   minDate: string = '';
   minTime: string = '';
 
-  constructor(private router: Router,private authService: AuthService, private appointmentService: AppointmentService) {
+  constructor(private router: Router,private authService: AuthService, private appointmentService: AppointmentService, private snackBar: MatSnackBar) {
     this.getPatientList();
   }
 
@@ -77,12 +77,29 @@ export class AddAppointmentComponent implements OnInit {
     this.appointmentService.addAppointment(this.AppointmentForm.value).subscribe({
       next: (data) => {
         this.isLoading = false;
-        alert(data.message)
-        this.router.navigate(['/login']); 
+        alert(data.message);
+        this.snackBar.open(
+          data.message,
+          'Close',
+          {
+            duration: 3000,
+            verticalPosition: 'top',
+            horizontalPosition: 'right',
+          }
+        );
+        this.router.navigate(['/ProviderDashboard']); 
       },
       error: (err) => {
         this.isLoading = false;
-        alert(err.message);
+        this.snackBar.open(
+          err.message,
+          'Close',
+          {
+            duration: 3000,
+            verticalPosition: 'top',
+            horizontalPosition: 'right',
+          }
+        );
       }
     })
   }

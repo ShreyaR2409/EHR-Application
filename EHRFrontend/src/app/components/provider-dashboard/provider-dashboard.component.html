@@ -1,51 +1,81 @@
 <app-navbar></app-navbar>
 <div class="container mt-4">
-  <!-- Loader Spinner -->
-  <div *ngIf="isLoading" class="loader-overlay">
-    <div class="spinner-border text-primary" role="status">
+  <div class="loader-overlay" *ngIf="isLoading">
+    <div class="spinner-border" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
   </div>
 
-  <button routerLink="/AddAppointment">Add Appointment</button>
-  <!-- Appointment List -->
+  <button routerLink="/AddAppointment" class="btn btn-primary mb-4">Add Appointment</button>
+
   <h4 class="text-center mb-4">Appointment List</h4>
+  <div class="form-group">
+    <label for="statusFilter">Filter by Status:</label>
+    <select id="statusFilter" class="form-control w-50 mb-4" [(ngModel)]="selectedStatus" (change)="filterAppointments()">
+      <option value="">All</option>
+      <option value="Scheduled">Schedule</option>
+      <option value="Completed">Completed</option>
+      <option value="Cancelled">Cancelled</option>
+    </select>
+  </div>
   <div *ngIf="appointments.length === 0 && !isLoading" class="alert alert-warning text-center">
     No Appointment Found
   </div>
-  <!-- Appointment Table -->
-  <table class="table table-striped" *ngIf="appointments.length > 0">
-    <thead>
-      <tr>
-        <th>Sr No.</th>
-        <th>Patient Name</th>
-        <th>Appointment Date</th>
-        <th>Appointment Time</th>
-        <th>Chief Complaint</th>
-        <th>Status</th>
-        <th>Fee</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let appointment of appointments; let i = index">
-        <td>{{ i + 1 }}</td>
-        <td>{{ appointment.firstName  }} {{ appointment.lastName  }}</td>
-                <td>{{ appointment.appointmentDate | date:'mediumDate' }}</td>
-        <td>{{ appointment.appointmentTime  }}</td>
-        <td>{{ appointment.chiefComplaint }}</td>
-        <td>
-          <span [ngClass]="getStatusClass(appointment.appointmentStatus)">
-            {{ appointment.appointmentStatus }}
-          </span>
-        </td>
-        <td>{{ appointment.fee | currency }}</td>
-        <td>
-          <!-- Example action buttons -->
-          <!-- <button class="btn btn-primary btn-sm" (click)="viewDetails(appointment)">Go To Appointment</button> -->
+
+  <div class="row" *ngIf="appointments.length > 0">
+    <div class="col-md-6 col-lg-4 mb-4" *ngFor="let appointment of filteredAppointments; let i = index">
+      <div class="card h-100 shadow-lg border-0">
+        <div class="card-header border text-center">
+          <h5 class="mb-0">{{ appointment.firstName }} {{ appointment.lastName }}</h5>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <strong>Date:</strong> {{ appointment.appointmentDate | date:'mediumDate' }}
+            </li>
+            <li class="list-group-item">
+              <strong>Time:</strong> {{ appointment.appointmentTime }}
+            </li>
+            <li class="list-group-item">
+              <strong>Complaint:</strong> {{ appointment.chiefComplaint }}
+            </li>
+            <li class="list-group-item">
+              <strong>Status:</strong> 
+              <span [ngClass]="getStatusClass(appointment.appointmentStatus)">
+                {{ appointment.appointmentStatus }}
+              </span>
+            </li>
+            <li class="list-group-item">
+              <strong>Fee:</strong> {{ appointment.fee | currency }}
+            </li>
+          </ul>
+        </div>
+        <div class="card-footer d-flex justify-content-between" *ngIf="appointment.appointmentStatus == 'Scheduled' ">
           <button class="btn btn-warning btn-sm" [routerLink]="['/GoToAppointment', appointment.id]">Go To Appointment</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          <button class="btn btn-danger btn-sm" (click)="openConfirmationModal(appointment)">Cancel</button>
+        </div>
+        <div class="card-footer d-flex justify-content-around" *ngIf="appointment.appointmentStatus == 'Completed' ">
+          <button class="btn btn-warning btn-sm" [routerLink]="['/GoToAppointment', appointment.id]">View</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmationModalLabel">Confirm Cancellation</h5>
+        <button type="button" class="btn-close" (click)="closeConfirmationModal()"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to cancel this appointment?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="CancelAppointment()" [disabled]="isLoading" [style.cursor]="isLoading ? 'not-allowed' : 'pointer'">Yes</button>
+        <button type="button" class="btn btn-secondary" (click)="closeConfirmationModal()" [disabled]="isLoading" [style.cursor]="isLoading ? 'not-allowed' : 'pointer'">No</button>
+      </div>
+    </div>
+  </div>
 </div>

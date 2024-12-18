@@ -1,11 +1,11 @@
 <body class="bg-light d-flex justify-content-center align-items-center">
-
     <div class="container">
-        <div *ngIf="isLoading" class="loader">
-          <div class="spinner-border" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div>
+      <div class="loader-overlay" *ngIf="isLoading">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
         </div>
+      </div>
+      
         <form class="border p-3 rounded-3 registration-form" [formGroup]="RegistrationForm" (ngSubmit)="onSubmit()">
           <h2 class="form-heading bg-light p-2">Provider Registration</h2>
       
@@ -13,14 +13,14 @@
           <div class="form-row">
             <div class="col-md-6 form-group">
               <label for="firstname">First Name</label>
-              <input type="text"  maxlength="15" id="firstname" class="form-control" formControlName="FirstName" placeholder="Enter your first name">
+              <input type="text"  maxlength="20" id="firstname" class="form-control" formControlName="FirstName" placeholder="Enter your first name">
               <small class="error-text" *ngIf="RegistrationForm.get('FirstName')?.invalid && RegistrationForm.get('FirstName')?.touched">
                 First Name is required
               </small>
             </div>
             <div class="col-md-6 form-group">
               <label for="lastname">Last Name</label>
-              <input type="text" maxlength="15" id="lastname" class="form-control" formControlName="LastName" placeholder="Enter your last name">
+              <input type="text" maxlength="20" id="lastname" class="form-control" formControlName="LastName" placeholder="Enter your last name">
               <small class="error-text" *ngIf="RegistrationForm.get('LastName')?.invalid && RegistrationForm.get('LastName')?.touched">
                 Last Name is required
               </small>
@@ -30,7 +30,7 @@
           <!-- Email -->
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" maxlength="35" class="form-control" formControlName="Email" placeholder="Enter your email">
+            <input type="email" id="email" maxlength="45" class="form-control" formControlName="Email" placeholder="Enter your email">
             <small class="error-text" *ngIf="RegistrationForm.get('Email')?.invalid && RegistrationForm.get('Email')?.touched">
               A valid email is required
             </small>
@@ -118,14 +118,14 @@
           <div class="form-row">
             <div class="col-md-6 form-group">
               <label for="pincode">Pin Code</label>
-              <input type="number" id="pincode" class="form-control" formControlName="PinCode" placeholder="Enter your pin code">
+              <input type="number" id="pincode" class="form-control" formControlName="PinCode" placeholder="Enter your pin code" (input)="validateMaxLengthPin($event)">
               <small class="error-text" *ngIf="RegistrationForm.get('PinCode')?.invalid && RegistrationForm.get('PinCode')?.touched">
                 Pin Code is required
               </small>
             </div>
             <div class="col-md-6 form-group">
               <label for="city">City</label>
-              <input type="text" id="city" maxlength="15" class="form-control" formControlName="City" placeholder="Enter your city">
+              <input type="text" id="city" maxlength="20" class="form-control" formControlName="City" placeholder="Enter your city">
               <small class="error-text" *ngIf="RegistrationForm.get('City')?.invalid && RegistrationForm.get('City')?.touched">
                 City is required
               </small>
@@ -136,7 +136,7 @@
       <div class="form-row">
         <div class="col-md-4 form-group">
           <label for="Qualification">Qualification</label>
-          <input type="text" id="Qualification" class="form-control" formControlName="Qualification" placeholder="Enter your Qualification">
+          <input type="text" maxlength="10" id="Qualification" class="form-control" formControlName="Qualification" placeholder="Enter your Qualification">
           <small class="error-text" *ngIf="RegistrationForm.get('Qualification')?.invalid && RegistrationForm.get('Qualification')?.touched">
             Qualification required
           </small>
@@ -164,7 +164,7 @@
         </div>
         <div class="col-md-6 form-group">
           <label for="VisitingCharge">Visiting Charge</label>
-          <input type="text" id="VisitingCharge" maxlength="15" class="form-control" formControlName="VisitingCharge" placeholder="Enter your Visiting Charge">
+          <input type="number" id="VisitingCharge" maxlength="15" class="form-control" formControlName="VisitingCharge" placeholder="Enter your Visiting Charge">
           <small class="error-text" *ngIf="RegistrationForm.get('VisitingCharge')?.invalid && RegistrationForm.get('VisitingCharge')?.touched">
             Visiting Charge is required
           </small>

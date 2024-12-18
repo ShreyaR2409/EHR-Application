@@ -1,5 +1,6 @@
 ﻿using App.Core.App.Appointment.Command;
 using App.Core.App.Appointment.Query;
+using App.Core.App.Utility.Query;
 using App.Core.Model.Appointment;
 using Domain.Entities.Appointments;
 using MediatR;
@@ -68,6 +69,20 @@ namespace EHRApi.Controllers
             };
             var appointments = await _mediator.Send(query);
             return Ok(appointments);
+        }
+
+        [HttpPost("SoapNote")]
+        public async Task<IActionResult> AddSoapNote(SoapNoteDto dto)
+        {
+            var result = await _mediator.Send(new AddSoapNoteCommand { SoapNote = dto });
+            return Ok(result);
+        }
+
+        [HttpGet("SoapNote")]
+        public async Task<IActionResult> GetSoapNote(int id)
+        {
+            var result = await _mediator.Send(new GetSoapNoteByAppointmentId { AppointmentId = id });
+            return Ok(result);
         }
     }
 }

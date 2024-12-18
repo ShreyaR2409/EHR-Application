@@ -45,7 +45,10 @@ export class PatientRegistrationComponent implements OnInit {
     CountryId: new FormControl("", [Validators.required]),
     City: new FormControl("", [Validators.required]),
     StateId: new FormControl("", [Validators.required]),
-    PinCode: new FormControl("", [Validators.required]),
+    PinCode: new FormControl("", [Validators.required,
+      Validators.minLength(6),      
+      Validators.maxLength(6)  
+    ]),
     UserTypeId: new FormControl(2, [Validators.required]),
     ProfileImage: new FormControl(null, [Validators.required]),
     PhoneNumber: new FormControl("", [  Validators.required, Validators.pattern(/^[0-9]*$/), 
@@ -62,6 +65,13 @@ export class PatientRegistrationComponent implements OnInit {
     }
   }
   
+  validateMaxLengthPin(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.value.length > 6) {
+      input.value = input.value.slice(0, 6); 
+      this.RegistrationForm.get('PinCode')?.setValue(input.value);
+    }
+  }
 
   onFileSelected(event: any) {
     const file = event.target.files[0];
@@ -81,7 +91,7 @@ export class PatientRegistrationComponent implements OnInit {
         this.genders = data;
       },
       error: (error) => {
-
+        console.log(error);
       }
     })
   }
@@ -92,7 +102,7 @@ export class PatientRegistrationComponent implements OnInit {
         this.roles = data;
       },
       error:(error)=>{
-
+        console.log(error);
       }
     })
   }
@@ -103,7 +113,7 @@ export class PatientRegistrationComponent implements OnInit {
         this.countries = data;
       },
       error:(error)=>{
-
+        console.log(error);
       }
     })
   }
@@ -114,7 +124,7 @@ export class PatientRegistrationComponent implements OnInit {
         this.states = data;
       },
       error:(error)=>{
-
+        console.log(error);
       }
     })
   }
@@ -125,7 +135,7 @@ export class PatientRegistrationComponent implements OnInit {
         this.specialisations = data;
       },
       error:(error)=>{
-
+        console.log(error);
       }
     })
   }
@@ -136,7 +146,7 @@ export class PatientRegistrationComponent implements OnInit {
         this.bloodGroups = data;
       },
       error:(error)=>{
-
+        console.log(error);
       }
     })
   }

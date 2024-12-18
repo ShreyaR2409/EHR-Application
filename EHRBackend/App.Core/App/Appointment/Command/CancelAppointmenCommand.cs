@@ -24,8 +24,11 @@ namespace App.Core.App.Appointment.Command
         }
         public async Task<object> Handle(CancelAppointmenCommand command, CancellationToken cancellationToken)
         {
+            
             var appointment = await _appDbContext.Set<Domain.Entities.Appointments.Appointment>()
-                .FirstOrDefaultAsync(a => a.Id == command.AppointmentId, cancellationToken);
+      .Include(a => a.Provider) // Include Provider
+      .Include(a => a.Patient)  // Include Patient
+      .FirstOrDefaultAsync(a => a.Id == command.AppointmentId, cancellationToken);
 
             if (appointment == null)
             {
@@ -51,9 +54,11 @@ namespace App.Core.App.Appointment.Command
             _appDbContext.Set<Domain.Entities.Appointments.Appointment>().Update(appointment);
             await _appDbContext.SaveChangesAsync(cancellationToken);
             string subject = "Appointment Cancelled";
-            string patientBody = $"Your appointment is Cancelled for {appointment.AppointmentDate.ToShortDateString()} at {appointment.AppointmentTime} with Dr. {appointment.Provider.FirstName}.";
-            string providerBody = $"Your appointment is Cancelled for {appointment.Patient.FirstName} on {appointment.AppointmentDate.ToShortDateString()} at {appointment.AppointmentTime}.";
+            string patientBody = $"Your appointment is Cancelled for {appointment.AppointmentDate.ToShortDateString()} at {appointment.AppointmentTime} with Dr. {appointment.Provider?.FirstName ?? "Unknown"}.";
+            string providerBody = $"Your appointment is Cancelled for {appointment.Patient?.FirstName ?? "Unknown"} on {appointment.AppointmentDate.ToShortDateString()} at {appointment.AppointmentTime}.";
 
+            await _emailService.SendEmailAsync(appointment.Patient?.Email ?? "Unknown", subject, patientBody);
+            await _emailService.SendEmailAsync(appointment.Provider?.Email ?? "Unknown", subject, providerBody);
 
             return new
             {

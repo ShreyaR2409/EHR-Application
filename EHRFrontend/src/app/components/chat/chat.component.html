@@ -1,1 +1,21 @@
-<p>chat works!</p>
+<div class="chat-window">
+    <div class="chat-header">Chat</div>
+    <div class="chat-body">
+      <div
+        *ngFor="let message of messages"
+        [class.sent]="message.sender === patientId"
+        [class.received]="message.sender === providerId"
+      >
+        <div class="message-content">{{ message.message }}</div>
+      </div>
+    </div>
+    <div class="chat-footer">
+      <input
+        type="text"
+        [(ngModel)]="newMessage"
+        placeholder="Type your message..."
+      />
+      <button (click)="sendMessage()">Send</button>
+    </div>
+  </div>
+  

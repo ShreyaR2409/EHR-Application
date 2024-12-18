@@ -29,6 +29,7 @@ namespace Infrastructure
         public DbSet<UserType> userTypes { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<SoapNotes> SoapNotes { get; set; }
+        public DbSet<ChatMessage> ChatMessages { get; set; }
 
         public IDbConnection GetConnection()
         {

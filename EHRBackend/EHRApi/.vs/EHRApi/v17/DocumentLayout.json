@@ -1,28 +1,20 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\",
+  "WorkspaceRootPath": "E:\\EHRApp\\EHRBackend\\EHRApi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A5EB79D6-A680-4829-A9AD-6729906D27D1}|..\\App.Core\\App.Core.csproj|c:\\users\\shreyaraut\\notes\\angular\\ehrapplication\\ehr-application\\ehrbackend\\app.core\\app\\appointment\\command\\updateappointmentcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{96467F2B-2FB5-43CD-B1F7-CE2F57CF8D51}|EHRApi.csproj|e:\\ehrapp\\ehrbackend\\ehrapi\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96467F2B-2FB5-43CD-B1F7-CE2F57CF8D51}|EHRApi.csproj|solutionrelative:controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{96467F2B-2FB5-43CD-B1F7-CE2F57CF8D51}|EHRApi.csproj|c:\\users\\shreyaraut\\notes\\angular\\ehrapplication\\ehr-application\\ehrbackend\\ehrapi\\controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{96467F2B-2FB5-43CD-B1F7-CE2F57CF8D51}|EHRApi.csproj|solutionrelative:controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CF6601A8-16B7-418E-9E21-D5564F2E33D0}|..\\Infrastructure\\Infrastructure.csproj|e:\\ehrapp\\ehrbackend\\infrastructure\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A5EB79D6-A680-4829-A9AD-6729906D27D1}|..\\App.Core\\App.Core.csproj|c:\\users\\shreyaraut\\notes\\angular\\ehrapplication\\ehr-application\\ehrbackend\\app.core\\app\\appointment\\query\\getappointmentdetailsbyid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3D55B912-97E6-42AE-85F8-9235923426CB}|..\\Domain\\Domain.csproj|e:\\ehrapp\\ehrbackend\\domain\\entities\\appointments\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A5EB79D6-A680-4829-A9AD-6729906D27D1}|..\\App.Core\\App.Core.csproj|c:\\users\\shreyaraut\\notes\\angular\\ehrapplication\\ehr-application\\ehrbackend\\app.core\\app\\appointment\\query\\getappointmentsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A5EB79D6-A680-4829-A9AD-6729906D27D1}|..\\App.Core\\App.Core.csproj|c:\\users\\shreyaraut\\notes\\angular\\ehrapplication\\ehr-application\\ehrbackend\\app.core\\model\\appointment\\getappointmentdetailsbyiddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A5EB79D6-A680-4829-A9AD-6729906D27D1}|..\\App.Core\\App.Core.csproj|c:\\users\\shreyaraut\\notes\\angular\\ehrapplication\\ehr-application\\ehrbackend\\app.core\\app\\appointment\\command\\cancelappointmencommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A5EB79D6-A680-4829-A9AD-6729906D27D1}|..\\App.Core\\App.Core.csproj|c:\\users\\shreyaraut\\notes\\angular\\ehrapplication\\ehr-application\\ehrbackend\\app.core\\model\\appointment\\getappointmentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{96467F2B-2FB5-43CD-B1F7-CE2F57CF8D51}|EHRApi.csproj|e:\\ehrapp\\ehrbackend\\ehrapi\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96467F2B-2FB5-43CD-B1F7-CE2F57CF8D51}|EHRApi.csproj|solutionrelative:controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -32,97 +24,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "GetAppointmentDto.cs",
-              "DocumentMoniker": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\App.Core\\Model\\Appointment\\GetAppointmentDto.cs",
-              "RelativeDocumentMoniker": "..\\App.Core\\Model\\Appointment\\GetAppointmentDto.cs",
-              "ToolTip": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\App.Core\\Model\\Appointment\\GetAppointmentDto.cs",
-              "RelativeToolTip": "..\\App.Core\\Model\\Appointment\\GetAppointmentDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T10:32:41.702Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AppointmentController.cs",
-              "DocumentMoniker": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\Controllers\\AppointmentController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AppointmentController.cs",
-              "ToolTip": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\Controllers\\AppointmentController.cs",
-              "RelativeToolTip": "Controllers\\AppointmentController.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAcwEEAAAANAAAAAAAAAA==",
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "E:\\EHRApp\\EHRBackend\\Infrastructure\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "..\\Infrastructure\\AppDbContext.cs",
+              "ToolTip": "E:\\EHRApp\\EHRBackend\\Infrastructure\\AppDbContext.cs",
+              "RelativeToolTip": "..\\Infrastructure\\AppDbContext.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T06:35:54.224Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GetAppointmentDetailsByIdDto.cs",
-              "DocumentMoniker": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\App.Core\\Model\\Appointment\\GetAppointmentDetailsByIdDto.cs",
-              "RelativeDocumentMoniker": "..\\App.Core\\Model\\Appointment\\GetAppointmentDetailsByIdDto.cs",
-              "ToolTip": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\App.Core\\Model\\Appointment\\GetAppointmentDetailsByIdDto.cs",
-              "RelativeToolTip": "..\\App.Core\\Model\\Appointment\\GetAppointmentDetailsByIdDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T12:07:04.248Z",
+              "WhenOpened": "2024-12-17T17:12:08.689Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UpdateAppointmentCommand.cs",
-              "DocumentMoniker": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\App.Core\\App\\Appointment\\Command\\UpdateAppointmentCommand.cs",
-              "RelativeDocumentMoniker": "..\\App.Core\\App\\Appointment\\Command\\UpdateAppointmentCommand.cs",
-              "ToolTip": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\App.Core\\App\\Appointment\\Command\\UpdateAppointmentCommand.cs",
-              "RelativeToolTip": "..\\App.Core\\App\\Appointment\\Command\\UpdateAppointmentCommand.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwAcAAAAAAAAAAAAAAA==",
+              "Title": "ChatController.cs",
+              "DocumentMoniker": "E:\\EHRApp\\EHRBackend\\EHRApi\\Controllers\\ChatController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ChatController.cs",
+              "ToolTip": "E:\\EHRApp\\EHRBackend\\EHRApi\\Controllers\\ChatController.cs",
+              "RelativeToolTip": "Controllers\\ChatController.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAAwBYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T07:49:14.961Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "GetAppointmentsQuery.cs",
-              "DocumentMoniker": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\App.Core\\App\\Appointment\\Query\\GetAppointmentsQuery.cs",
-              "RelativeDocumentMoniker": "..\\App.Core\\App\\Appointment\\Query\\GetAppointmentsQuery.cs",
-              "ToolTip": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\App.Core\\App\\Appointment\\Query\\GetAppointmentsQuery.cs",
-              "RelativeToolTip": "..\\App.Core\\App\\Appointment\\Query\\GetAppointmentsQuery.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAswEIAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T10:35:03.78Z",
+              "WhenOpened": "2024-12-17T17:10:35.258Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "GetAppointmentDetailsById.cs",
-              "DocumentMoniker": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\App.Core\\App\\Appointment\\Query\\GetAppointmentDetailsById.cs",
-              "RelativeDocumentMoniker": "..\\App.Core\\App\\Appointment\\Query\\GetAppointmentDetailsById.cs",
-              "ToolTip": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\App.Core\\App\\Appointment\\Query\\GetAppointmentDetailsById.cs",
-              "RelativeToolTip": "..\\App.Core\\App\\Appointment\\Query\\GetAppointmentDetailsById.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAuwA4AAAAgAAAAAAAAAA==",
+              "Title": "ChatMessage.cs",
+              "DocumentMoniker": "E:\\EHRApp\\EHRBackend\\Domain\\Entities\\Appointments\\ChatMessage.cs",
+              "RelativeDocumentMoniker": "..\\Domain\\Entities\\Appointments\\ChatMessage.cs",
+              "ToolTip": "E:\\EHRApp\\EHRBackend\\Domain\\Entities\\Appointments\\ChatMessage.cs",
+              "RelativeToolTip": "..\\Domain\\Entities\\Appointments\\ChatMessage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T11:58:28.993Z",
+              "WhenOpened": "2024-12-17T17:09:20.254Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CancelAppointmenCommand.cs",
-              "DocumentMoniker": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\App.Core\\App\\Appointment\\Command\\CancelAppointmenCommand.cs",
-              "RelativeDocumentMoniker": "..\\App.Core\\App\\Appointment\\Command\\CancelAppointmenCommand.cs",
-              "ToolTip": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\App.Core\\App\\Appointment\\Command\\CancelAppointmenCommand.cs",
-              "RelativeToolTip": "..\\App.Core\\App\\Appointment\\Command\\CancelAppointmenCommand.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAgwC0AAAANAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "PaymentController.cs",
+              "DocumentMoniker": "E:\\EHRApp\\EHRBackend\\EHRApi\\Controllers\\PaymentController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PaymentController.cs",
+              "ToolTip": "E:\\EHRApp\\EHRBackend\\EHRApi\\Controllers\\PaymentController.cs",
+              "RelativeToolTip": "Controllers\\PaymentController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T10:20:37.013Z",
+              "WhenOpened": "2024-12-17T15:58:33.634Z",
               "EditorCaption": ""
             }
           ]

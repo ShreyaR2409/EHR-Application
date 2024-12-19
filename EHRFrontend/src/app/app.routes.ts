@@ -23,43 +23,53 @@ export const routes: Routes = [
     },
     {
         path: 'ProviderRegistration',
-        component: ProviderRegistrationComponent
+        component: ProviderRegistrationComponent,
+        // canActivate: [AuthGuard]
     },
     {
         path : 'PatientRegistration',
-        component: PatientRegistrationComponent
+        component: PatientRegistrationComponent,
+        // canActivate: [AuthGuard]
     },
     {
         path : 'PatientDashboard',
-        component: PatientDashboardComponent
+        component: PatientDashboardComponent,
+        canActivate: [AuthGuard]
     },
     {
         path : 'ProviderDashboard',
-        component: ProviderDashboardComponent
+        component: ProviderDashboardComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'Navbar',
-        component: NavbarComponent
+        component: NavbarComponent,
+        canActivate: [AuthGuard]
     },
     {
         path : 'Profile',
-        component: ProfileComponent
+        component: ProfileComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'ChangePassword',
-        component: ChangePasswordComponent
+        component: ChangePasswordComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'AddAppointment',
-        component: AddAppointmentComponent
+        component: AddAppointmentComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'AddAppointmentPatient',
-        component: AddAppointmentPatientComponent
+        component: AddAppointmentPatientComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'GoToAppointment/:id',
-        component: GoToAppointmentComponent
+        component: GoToAppointmentComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: '',

@@ -22,7 +22,14 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void{
-    this.getUser();
+    // this.authService.currentUser.subscribe((userData) => {
+    //   if (userData) {
+    //     this.username = userData.username;
+    //     this.userRole = userData.role;
+    //     this.getUser(); 
+    //   }
+    // });
+    this.getUser(); 
   }
 
   isAdminFn(): boolean {

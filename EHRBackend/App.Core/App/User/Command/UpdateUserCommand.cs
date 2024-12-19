@@ -47,7 +47,11 @@ namespace App.Core.App.User.Command
             existingUser.FirstName = userDto.FirstName;
             existingUser.LastName = userDto.LastName;
             existingUser.Email = userDto.Email;
-            existingUser.Dob = userDto.Dob;
+            //existingUser.Dob = userDto.Dob;
+            if (userDto.Dob.HasValue)
+            {
+                existingUser.Dob = userDto.Dob.Value;
+            }
             existingUser.Address = userDto.Address;
             existingUser.City = userDto.City;
             existingUser.PhoneNumber = userDto.PhoneNumber;

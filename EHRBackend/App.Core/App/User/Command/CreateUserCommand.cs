@@ -42,7 +42,8 @@ namespace App.Core.App.User.Command
                 };
                 return responses;
             }
-            string username = await GenerateUsernameAsync(user.FirstName, user.LastName, user.Dob, user.UserTypeId);
+            string username = await GenerateUsernameAsync(user.FirstName, user.LastName, user.Dob ?? throw new InvalidOperationException("Date of Birth is required"),
+ user.UserTypeId);
             string password = GenerateRandomPassword();
 
             string imagePath = null;

@@ -171,6 +171,7 @@
           <button
             type="submit"
             class="btn btn-submit w-100"
+            [disabled]="isLoading"
           >
             Submit OTP
           </button>
@@ -180,3 +181,42 @@
   </div>
 </div>
 </body>
+
+<div
+  class="modal fade"
+  id="roleSelectionModal"
+  tabindex="-1"
+  aria-labelledby="roleSelectionModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="roleSelectionModalLabel">Select Role</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>Please select a role to continue:</p>
+        <div class="d-flex justify-content-around">
+          <button
+            class="btn btn-primary"
+            (click)="selectRole('Patient')"
+          >
+            Patient
+          </button>
+          <button
+            class="btn btn-secondary"
+            (click)="selectRole('Provider')"
+          >
+            Provider
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

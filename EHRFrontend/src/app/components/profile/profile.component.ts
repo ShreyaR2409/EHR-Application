@@ -21,7 +21,7 @@ export class ProfileComponent {
     LastName: '',
     Email: '',
     UserTypeId: 0,
-    Dob: '',
+    // Dob: '',
     PhoneNumber: '',
     Address: '',
     Pincode: '',
@@ -73,8 +73,8 @@ export class ProfileComponent {
     formData.append('LastName', this.user.LastName);
     formData.append('Email', this.user.Email);
     formData.append('UserTypeId', this.user.UserTypeId.toString());
-    const dob = this.formattedDob || '';
-    formData.append('Dob', this.user.dob);
+    // const dob = this.formattedDob || '';
+    // formData.append('Dob', this.user.dob);
     formData.append('PhoneNumber', this.user.PhoneNumber);
     formData.append('Address', this.user.Address);
     formData.append('City', this.user.City);

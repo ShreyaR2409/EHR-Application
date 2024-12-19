@@ -4,12 +4,11 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/Auth/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { UtilityService } from '../../services/Utility/utility.service';
-import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-provider-registration',
   standalone: true,
-  imports: [RouterLink,ReactiveFormsModule, CommonModule, MatSnackBarModule],
+  imports: [RouterLink,ReactiveFormsModule, CommonModule],
   templateUrl: './provider-registration.component.html',
   styleUrl: './provider-registration.component.css'
 })
@@ -24,7 +23,8 @@ export class ProviderRegistrationComponent {
   isLoading = false;
   todayDate = new Date().toISOString().split('T')[0]; 
   
-  constructor(private router: Router, private authService: AuthService, private utilityService: UtilityService, private snackBar: MatSnackBar) { }
+  constructor(private router: Router, private authService: AuthService, private utilityService: UtilityService, private toastr: ToastrService
+  ) { }
 
   ngOnInit(): void {
     this.getGender();
@@ -182,21 +182,14 @@ export class ProviderRegistrationComponent {
         next: (res) => {
           this.isLoading = false;
           console.log('Registration Successful', res);
-          this.snackBar.open('User registered successfully. Please Check mail for Username and Password', 'Close', {
-            duration: 3000,
-            verticalPosition: 'bottom',
-            horizontalPosition: 'right',
-          });
+          this.toastr.success('Registration Successful. Please check email for username and password', 'Success');
           this.router.navigate(['/Login']); 
         },
         error: (err) => {
           this.isLoading = false;
           console.error('Registration Failed', err);
-          this.snackBar.open('Registration failed. Please try again.', 'Close', {
-            duration: 3000,
-            verticalPosition: 'top',
-            horizontalPosition: 'right',
-          });
+          this.toastr.error('Registration Failed', 'Error');
+
         },
       });
     }

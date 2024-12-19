@@ -8,13 +8,13 @@ import {
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/Auth/auth.service';
-import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 import * as bootstrap from 'bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, MatSnackBarModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -26,7 +26,7 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private snackBar: MatSnackBar
+    private toastr: ToastrService
   ) {
     this.Role = sessionStorage.getItem('role')!;
   }
@@ -52,56 +52,37 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const user = this.loginForm.value;
       this.isLoading = true;
-  
+
       this.authService.loginUser(user).subscribe({
         next: (res) => {
           this.isLoading = false;
-  
+
           if (res.status === 401) {
-            this.snackBar.open(res.message, 'Close', {
-              duration: 3000,
-              verticalPosition: 'top',
-              horizontalPosition: 'right',
-            });
-            return; 
+            this.toastr.error(res.message , 'error');
+            return;
           }
-  
+
           if (res.status === 200) {
             this.storedUsername = user.userName || null;
-  
+
             const otpModalElement = document.getElementById('otpModal');
             if (otpModalElement) {
               const otpModal = new bootstrap.Modal(otpModalElement);
               otpModal.show();
             }
-  
-            this.snackBar.open(
-              'OTP has been sent to the registered email address',
-              'Close',
-              {
-                duration: 5000,
-                verticalPosition: 'bottom',
-                horizontalPosition: 'right',
-              }
-            );
+            this.toastr.success('OTP has been sent to the registered email address', 'Success');
           }
         },
         error: (err) => {
           this.isLoading = false;
           console.error('Error during login', err);
-  
-          this.snackBar.open('Invalid Username or Password', 'Close', {
-            duration: 3000,
-            verticalPosition: 'bottom',
-            horizontalPosition: 'right',
-          });
+          this.toastr.error('Invalid Username or Password', 'Error');
         },
       });
     } else {
       this.loginForm.markAllAsTouched();
     }
   }
-  
 
   submitOtp() {
     if (this.otpForm.valid && this.storedUsername) {
@@ -114,31 +95,18 @@ export class LoginComponent {
       this.authService.verifyOtp(otpData).subscribe({
         next: (res) => {
           this.isLoading = false;
-          this.snackBar.open('OTP Verified Successfully!', 'Close', {
-            duration: 3000,
-            verticalPosition: 'bottom',
-            horizontalPosition: 'right',
-          });
+          this.toastr.success('OTP Verified Successfully!', 'Success');
           this.authService.loadCurrentUser();
-          // this.router.navigateByUrl('home');
           this.closeOtpModal();
         },
         error: (err) => {
           console.error('Error during OTP verification', err);
-          this.snackBar.open(
-            'OTP verification failed. Please try again.',
-            'Close',
-            {
-              duration: 3000,
-              verticalPosition: 'top',
-              horizontalPosition: 'right',
-            }
-          );
+          this.toastr.error('OTP verification failed. Please try again.', 'Error');
         },
       });
-    }       else {
-        this.otpForm.markAllAsTouched();
-      }
+    } else {
+      this.otpForm.markAllAsTouched();
+    }
   }
 
   openForgotPasswordModal() {
@@ -158,29 +126,17 @@ export class LoginComponent {
         next: (res: any) => {
           this.isLoading = false;
           const message = typeof res === 'string' ? res : res.message;
-          this.snackBar.open(
-            message,
-            'Close',
-            {
-              duration: 3000,
-              verticalPosition: 'top',
-              horizontalPosition: 'right',
-            }
-          );
+          if(res.status == 404){
+            this.toastr.error(message, 'Error');
+          }
+          else{
+            this.toastr.success(message, 'Sucess');
+          }
           this.closeForgotPasswordModal();
         },
         error: (err) => {
           this.isLoading = false;
-          console.error('Error during password reset', err);
-          this.snackBar.open(
-            'Error during password reset. Please try again.',
-            'Close',
-            {
-              duration: 3000,
-              verticalPosition: 'top',
-              horizontalPosition: 'right',
-            }
-          );
+          this.toastr.error("Error during password reset", 'Error');
         },
       });
     } else {
@@ -208,11 +164,41 @@ export class LoginComponent {
     }
   }
 
+  
   NavigateToRegister() {
-    if (this.Role == 'Patient') {
-      this.router.navigateByUrl('PatientRegistration');
+    const role = sessionStorage.getItem('role');
+  
+    if (role) {
+      this.redirectToRolePage(role);
     } else {
-      this.router.navigateByUrl('ProviderRegistration');
+      const roleModalElement = document.getElementById('roleSelectionModal');
+      if (roleModalElement) {
+        const roleModal = new bootstrap.Modal(roleModalElement);
+        roleModal.show();
+      }
     }
   }
+  
+  selectRole(role: string) {
+    sessionStorage.setItem('role', role);
+  
+    const roleModalElement = document.getElementById('roleSelectionModal');
+    if (roleModalElement) {
+      const roleModalInstance = bootstrap.Modal.getInstance(roleModalElement);
+      roleModalInstance?.hide();
+    }
+  
+    this.redirectToRolePage(role);
+  }
+  
+  redirectToRolePage(role: string) {
+    if (role === 'Patient') {
+      this.router.navigate(['/PatientRegistration']);
+    } else if (role === 'Provider') {
+      this.router.navigate(['/ProviderRegistration']);
+    } else {
+      this.toastr.error('Invalid role selected', 'error');
+    }
+  }
+  
 }

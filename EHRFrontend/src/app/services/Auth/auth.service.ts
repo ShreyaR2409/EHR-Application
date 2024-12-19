@@ -51,7 +51,11 @@ export class AuthService {
   }
   
   public updateUser(userId: number, userData: FormData): Observable<any> {
-    return this.http.put(`${this.url}/UpdateUser/${userId}`, userData);
+    return this.http.put(`${this.url}/UpdateUser/${userId}`, userData).pipe(
+      tap((response) => {
+        this.currentUserSubject.next(response);
+      })
+    );
   }
 
   public changePassword(requestBody: { UserId: string, NewPassword: string }): Observable<any> {

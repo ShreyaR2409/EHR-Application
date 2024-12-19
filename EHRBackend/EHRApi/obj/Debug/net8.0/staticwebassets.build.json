@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "yWZgd/pa33a/Am6Og5RbD8zTSfx0AnnG5sFeYounXaE=",
+  "Hash": "DhuQJP4caoahoyXJkKscoYCYxS55LQEiUzWZbz2Gz2Q=",
   "Source": "EHRApi",
   "BasePath": "_content/EHRApi",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "EHRApi\\wwwroot",
       "Source": "EHRApi",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\12d23aed-21f2-4fe0-bd85-3384f8d0d85d_female2.png",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\12d23aed-21f2-4fe0-bd85-3384f8d0d85d_female2.png",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/12d23aed-21f2-4fe0-bd85-3384f8d0d85d_female2.png",
       "AssetKind": "All",
@@ -36,10 +36,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\12d23aed-21f2-4fe0-bd85-3384f8d0d85d_female2.png"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\1777293d-99fc-4041-860d-a4a451a2631a_user.png",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\1777293d-99fc-4041-860d-a4a451a2631a_user.png",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/1777293d-99fc-4041-860d-a4a451a2631a_user.png",
       "AssetKind": "All",
@@ -55,10 +55,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\1777293d-99fc-4041-860d-a4a451a2631a_user.png"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\1bff9034-16f9-43c8-9ebd-e5ebb105c940_NoImage.png",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\1bff9034-16f9-43c8-9ebd-e5ebb105c940_NoImage.png",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/1bff9034-16f9-43c8-9ebd-e5ebb105c940_NoImage.png",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\1bff9034-16f9-43c8-9ebd-e5ebb105c940_NoImage.png"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\1cca2b8c-14ed-4878-b0ef-4ed051c54ee5_user.png",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\1cca2b8c-14ed-4878-b0ef-4ed051c54ee5_user.png",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/1cca2b8c-14ed-4878-b0ef-4ed051c54ee5_user.png",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\1cca2b8c-14ed-4878-b0ef-4ed051c54ee5_user.png"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\1f995d36-e705-4eec-bebc-b372411eb9ae_WIN_20240515_12_20_23_Pro.jpg",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\1f995d36-e705-4eec-bebc-b372411eb9ae_WIN_20240515_12_20_23_Pro.jpg",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/1f995d36-e705-4eec-bebc-b372411eb9ae_WIN_20240515_12_20_23_Pro.jpg",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\1f995d36-e705-4eec-bebc-b372411eb9ae_WIN_20240515_12_20_23_Pro.jpg"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\22028476-fb04-42f5-bd58-9de0175e24ff_user.png",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\22028476-fb04-42f5-bd58-9de0175e24ff_user.png",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/22028476-fb04-42f5-bd58-9de0175e24ff_user.png",
       "AssetKind": "All",
@@ -131,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\22028476-fb04-42f5-bd58-9de0175e24ff_user.png"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\251202f7-1fe0-42c7-9efa-90adbe2d515d_female2.png",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\251202f7-1fe0-42c7-9efa-90adbe2d515d_female2.png",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/251202f7-1fe0-42c7-9efa-90adbe2d515d_female2.png",
       "AssetKind": "All",
@@ -150,10 +150,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\251202f7-1fe0-42c7-9efa-90adbe2d515d_female2.png"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\29638f6d-7417-4767-ac0c-60cce615e2e1_user.png",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\29638f6d-7417-4767-ac0c-60cce615e2e1_user.png",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/29638f6d-7417-4767-ac0c-60cce615e2e1_user.png",
       "AssetKind": "All",
@@ -169,10 +169,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\29638f6d-7417-4767-ac0c-60cce615e2e1_user.png"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\299dfdfd-24ee-4082-92f9-51d3e22ab706_female2.png",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\299dfdfd-24ee-4082-92f9-51d3e22ab706_female2.png",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/299dfdfd-24ee-4082-92f9-51d3e22ab706_female2.png",
       "AssetKind": "All",
@@ -188,10 +188,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\299dfdfd-24ee-4082-92f9-51d3e22ab706_female2.png"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\2ac73031-77a8-433a-b997-40c06bf4aa8b_user.png",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\2ac73031-77a8-433a-b997-40c06bf4aa8b_user.png",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/2ac73031-77a8-433a-b997-40c06bf4aa8b_user.png",
       "AssetKind": "All",
@@ -207,10 +207,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\2ac73031-77a8-433a-b997-40c06bf4aa8b_user.png"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\2bb26a81-933d-4449-86bb-daf80c948677_2-24391_nature-flowers-wallpapers-for-desktop.jpg",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\2bb26a81-933d-4449-86bb-daf80c948677_2-24391_nature-flowers-wallpapers-for-desktop.jpg",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/2bb26a81-933d-4449-86bb-daf80c948677_2-24391_nature-flowers-wallpapers-for-desktop.jpg",
       "AssetKind": "All",
@@ -226,10 +226,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\2bb26a81-933d-4449-86bb-daf80c948677_2-24391_nature-flowers-wallpapers-for-desktop.jpg"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\2bf3bf7b-dff1-4497-8922-2cf2b0418a5b_pic.jpg",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\2bf3bf7b-dff1-4497-8922-2cf2b0418a5b_pic.jpg",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/2bf3bf7b-dff1-4497-8922-2cf2b0418a5b_pic.jpg",
       "AssetKind": "All",
@@ -245,10 +245,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\2bf3bf7b-dff1-4497-8922-2cf2b0418a5b_pic.jpg"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\49f8de2d-d9aa-4d14-bd59-d9fc1668d135_female.png",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\49f8de2d-d9aa-4d14-bd59-d9fc1668d135_female.png",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/49f8de2d-d9aa-4d14-bd59-d9fc1668d135_female.png",
       "AssetKind": "All",
@@ -264,10 +264,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\49f8de2d-d9aa-4d14-bd59-d9fc1668d135_female.png"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\4f96a19f-3253-4177-8fd9-60e3d40ebec5_female2.png",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\4f96a19f-3253-4177-8fd9-60e3d40ebec5_female2.png",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/4f96a19f-3253-4177-8fd9-60e3d40ebec5_female2.png",
       "AssetKind": "All",
@@ -283,10 +283,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\4f96a19f-3253-4177-8fd9-60e3d40ebec5_female2.png"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\64b2cffe-0089-4410-9c0f-d41f2edc5025_user.png",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\64b2cffe-0089-4410-9c0f-d41f2edc5025_user.png",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/64b2cffe-0089-4410-9c0f-d41f2edc5025_user.png",
       "AssetKind": "All",
@@ -302,10 +302,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\64b2cffe-0089-4410-9c0f-d41f2edc5025_user.png"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\66c4f9a5-7b12-4ed6-8738-fababcee33f7_pic.jpg",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\66c4f9a5-7b12-4ed6-8738-fababcee33f7_pic.jpg",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/66c4f9a5-7b12-4ed6-8738-fababcee33f7_pic.jpg",
       "AssetKind": "All",
@@ -321,10 +321,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\66c4f9a5-7b12-4ed6-8738-fababcee33f7_pic.jpg"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\6b8116c3-ccb7-4a0d-81a0-f74d248589e8_WIN_20240625_10_49_38_Pro.jpg",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\6b8116c3-ccb7-4a0d-81a0-f74d248589e8_WIN_20240625_10_49_38_Pro.jpg",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/6b8116c3-ccb7-4a0d-81a0-f74d248589e8_WIN_20240625_10_49_38_Pro.jpg",
       "AssetKind": "All",
@@ -340,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\6b8116c3-ccb7-4a0d-81a0-f74d248589e8_WIN_20240625_10_49_38_Pro.jpg"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\722e4b06-9fbe-48b8-98d9-3e1acf02166e_WIN_20240115_11_40_15_Pro.jpg",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\722e4b06-9fbe-48b8-98d9-3e1acf02166e_WIN_20240115_11_40_15_Pro.jpg",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/722e4b06-9fbe-48b8-98d9-3e1acf02166e_WIN_20240115_11_40_15_Pro.jpg",
       "AssetKind": "All",
@@ -359,10 +359,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\722e4b06-9fbe-48b8-98d9-3e1acf02166e_WIN_20240115_11_40_15_Pro.jpg"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\73f6aec1-5062-421b-99ca-58d0ebf401a1_2-24391_nature-flowers-wallpapers-for-desktop.jpg",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\73f6aec1-5062-421b-99ca-58d0ebf401a1_2-24391_nature-flowers-wallpapers-for-desktop.jpg",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/73f6aec1-5062-421b-99ca-58d0ebf401a1_2-24391_nature-flowers-wallpapers-for-desktop.jpg",
       "AssetKind": "All",
@@ -378,10 +378,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\73f6aec1-5062-421b-99ca-58d0ebf401a1_2-24391_nature-flowers-wallpapers-for-desktop.jpg"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\948b228c-5ea0-4c32-a10a-100b126e1c5d_user.png",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\948b228c-5ea0-4c32-a10a-100b126e1c5d_user.png",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/948b228c-5ea0-4c32-a10a-100b126e1c5d_user.png",
       "AssetKind": "All",
@@ -397,10 +397,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\948b228c-5ea0-4c32-a10a-100b126e1c5d_user.png"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\94d1c16b-98e8-4a3f-a90d-12758ccf74ed_female2.png",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\94d1c16b-98e8-4a3f-a90d-12758ccf74ed_female2.png",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/94d1c16b-98e8-4a3f-a90d-12758ccf74ed_female2.png",
       "AssetKind": "All",
@@ -416,10 +416,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\94d1c16b-98e8-4a3f-a90d-12758ccf74ed_female2.png"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\a3c56bc8-999b-4dd0-831b-3837cf24824e_user.png",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\a3c56bc8-999b-4dd0-831b-3837cf24824e_user.png",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/a3c56bc8-999b-4dd0-831b-3837cf24824e_user.png",
       "AssetKind": "All",
@@ -435,10 +435,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\a3c56bc8-999b-4dd0-831b-3837cf24824e_user.png"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\a6b23d8b-5134-47b5-abf0-5af2e430ba89_user.png",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\a6b23d8b-5134-47b5-abf0-5af2e430ba89_user.png",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/a6b23d8b-5134-47b5-abf0-5af2e430ba89_user.png",
       "AssetKind": "All",
@@ -454,10 +454,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\a6b23d8b-5134-47b5-abf0-5af2e430ba89_user.png"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\a8de2cc1-1714-4dc1-ac8f-74ba8b7b62cc_user.png",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\a8de2cc1-1714-4dc1-ac8f-74ba8b7b62cc_user.png",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/a8de2cc1-1714-4dc1-ac8f-74ba8b7b62cc_user.png",
       "AssetKind": "All",
@@ -473,10 +473,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\a8de2cc1-1714-4dc1-ac8f-74ba8b7b62cc_user.png"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\b0aef1ed-408b-4816-b078-e0ae1a387683_img2.jpg",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\b0aef1ed-408b-4816-b078-e0ae1a387683_img2.jpg",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/b0aef1ed-408b-4816-b078-e0ae1a387683_img2.jpg",
       "AssetKind": "All",
@@ -492,10 +492,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\b0aef1ed-408b-4816-b078-e0ae1a387683_img2.jpg"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\b4107f20-6bdd-4a21-aa17-636ab8efa410_user.png",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\b4107f20-6bdd-4a21-aa17-636ab8efa410_user.png",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/b4107f20-6bdd-4a21-aa17-636ab8efa410_user.png",
       "AssetKind": "All",
@@ -511,10 +511,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\b4107f20-6bdd-4a21-aa17-636ab8efa410_user.png"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\b536e986-0999-493d-8869-2afc74646deb_user.png",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\b536e986-0999-493d-8869-2afc74646deb_user.png",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/b536e986-0999-493d-8869-2afc74646deb_user.png",
       "AssetKind": "All",
@@ -530,10 +530,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\b536e986-0999-493d-8869-2afc74646deb_user.png"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\bb48aec3-820d-4a7a-8ed8-a0c94e95e4eb_female2.png",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\bb48aec3-820d-4a7a-8ed8-a0c94e95e4eb_female2.png",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/bb48aec3-820d-4a7a-8ed8-a0c94e95e4eb_female2.png",
       "AssetKind": "All",
@@ -549,10 +549,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\bb48aec3-820d-4a7a-8ed8-a0c94e95e4eb_female2.png"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\bd286417-ee50-4976-bfc9-aa8c30f662a0_WIN_20240515_12_20_23_Pro.jpg",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\bd286417-ee50-4976-bfc9-aa8c30f662a0_WIN_20240515_12_20_23_Pro.jpg",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/bd286417-ee50-4976-bfc9-aa8c30f662a0_WIN_20240515_12_20_23_Pro.jpg",
       "AssetKind": "All",
@@ -568,10 +568,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\bd286417-ee50-4976-bfc9-aa8c30f662a0_WIN_20240515_12_20_23_Pro.jpg"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\d13eeaca-9bce-4d02-abf0-317d8dfeef4e_female.png",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\d13eeaca-9bce-4d02-abf0-317d8dfeef4e_female.png",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/d13eeaca-9bce-4d02-abf0-317d8dfeef4e_female.png",
       "AssetKind": "All",
@@ -587,10 +587,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\d13eeaca-9bce-4d02-abf0-317d8dfeef4e_female.png"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\dc14f3dd-719b-4a58-bb5d-19e0845a9355_female.png",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\dc14f3dd-719b-4a58-bb5d-19e0845a9355_female.png",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/dc14f3dd-719b-4a58-bb5d-19e0845a9355_female.png",
       "AssetKind": "All",
@@ -606,10 +606,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\dc14f3dd-719b-4a58-bb5d-19e0845a9355_female.png"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\deccff1f-41e1-4b20-933b-82cc36449ad4_pic.jpg",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\deccff1f-41e1-4b20-933b-82cc36449ad4_pic.jpg",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/deccff1f-41e1-4b20-933b-82cc36449ad4_pic.jpg",
       "AssetKind": "All",
@@ -625,10 +625,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\deccff1f-41e1-4b20-933b-82cc36449ad4_pic.jpg"
     },
     {
-      "Identity": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\uploads\\f555b864-27ec-4f56-a9ec-b57a747bb7d1_user.png",
+      "Identity": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\uploads\\f555b864-27ec-4f56-a9ec-b57a747bb7d1_user.png",
       "SourceId": "EHRApi",
       "SourceType": "Discovered",
-      "ContentRoot": "E:\\EHRApp\\EHRBackend\\EHRApi\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\shreyaraut\\Notes\\Angular\\EHRApplication\\EHR-Application\\EHRBackend\\EHRApi\\wwwroot\\",
       "BasePath": "_content/EHRApi",
       "RelativePath": "uploads/f555b864-27ec-4f56-a9ec-b57a747bb7d1_user.png",
       "AssetKind": "All",

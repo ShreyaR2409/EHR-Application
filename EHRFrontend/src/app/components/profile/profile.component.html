@@ -1,5 +1,10 @@
 <app-navbar></app-navbar>
 <div class="profile-container">
+  <div class="loader-overlay" *ngIf="isLoading">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
   <h2 class="profile-heading">User Profile</h2>
   <div class="profile-card">
     <div class="profile-image-container">
@@ -56,10 +61,10 @@
               <input [(ngModel)]="user.Email" name="email" class="form-control"  />
             </div>
 
-            <!-- <div class="form-group">
+            <div class="form-group">
               <label for="dob">Date of Birth</label>
               <input [(ngModel)]="user.dob" [value]="formattedDob" name="dob" class="form-control" type="date" [attr.max]="todayDate" />
-            </div> -->
+            </div>
 
             <div class="form-group">
               <label for="mobilenumber">Mobile Number</label>

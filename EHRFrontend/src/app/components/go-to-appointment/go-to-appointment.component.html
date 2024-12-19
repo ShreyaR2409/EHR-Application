@@ -7,8 +7,7 @@
       <div class="patient-details">
         <div style="display: flex; justify-content: space-between;">
           <h3>
-            {{ userDetail[0].FirstName }} {{ userDetail[0].LastName }}
-          
+            {{ userDetail[0].FirstName }} {{ userDetail[0].LastName }}          
           </h3>
         </div>
         <p><i class="fa-solid fa-venus-mars"></i> {{ userDetail[0].GenderName }}</p>
@@ -20,10 +19,10 @@
 
   <div class="appointment-info">
     <h4>Appointment Information</h4>
-    <p><i class="fa-solid fa-calendar"></i> Appointment Date: {{ userDetail[0].AppointmentDate }}</p>
+    <p><i class="fa-solid fa-calendar"></i> Appointment Date: {{ userDetail[0].AppointmentDate | date }}</p>
     <p><i class="fa-solid fa-clock"></i> Appointment Time: {{ userDetail[0].AppointmentTime }}</p>
     <p><i class="fa-solid fa-check-circle"></i> Status: {{ userDetail[0].AppointmentStatus }}</p>
-    <p><i class="fa-solid fa-rupee-sign"></i> Fee: ₹{{ userDetail[0].Fee }}</p>
+    <p><i class="fa-solid fa-rupee-sign"></i> Fee: ${{ userDetail[0].Fee }}</p>
   </div>
 
   <div class="chief-complaint">
@@ -33,7 +32,7 @@
 
   <div class="appointment-info" *ngIf="userDetail[0].AppointmentStatus == 'Completed'">
     <h4>Soap Notes</h4>
-    <p><i class="fa-solid fa-calendar"></i> subjective: {{ notes[0].subjective }}</p>
+    <p><i class="fa-solid fa-calendar"></i> Subjective: {{ notes[0].subjective }}</p>
     <p><i class="fa-solid fa-clock"></i> Objective: {{ notes[0].objective }}</p>
     <p><i class="fa-solid fa-check-circle"></i> Assessment: {{ notes[0].assessment }}</p>
     <p><i class="fa-solid fa-rupee-sign"></i> Plan: {{ notes[0].plan }}</p>
@@ -94,9 +93,9 @@
             </div>
           </div>
 
-          <div class="form-actions d-flex justify-content-end">
+          <div class="form-actions d-flex justify-content-center">
+            <button type="submit" class="btn btn-success">Save</button>&nbsp;
             <button type="button" class="btn btn-danger me-2" data-bs-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-primary">Save</button>
           </div>
         </form>
       </div>

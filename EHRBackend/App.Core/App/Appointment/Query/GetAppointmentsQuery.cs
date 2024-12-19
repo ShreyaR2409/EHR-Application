@@ -46,8 +46,8 @@ namespace App.Core.App.Appointment.Query
 
             // Join with the User table to get the correct name based on role
             var appointmentsWithUserData = await query
-                .OrderByDescending(a => a.AppointmentDate)
-                .ThenByDescending(a => a.AppointmentTime)
+                .OrderBy(a => a.AppointmentDate)
+                .ThenBy(a => a.AppointmentTime)
                 .Select(a => new GetAppointmentDto
                 {
                     Id = a.Id,

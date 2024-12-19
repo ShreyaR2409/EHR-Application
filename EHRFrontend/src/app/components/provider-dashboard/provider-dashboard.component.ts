@@ -3,14 +3,14 @@ import { NavbarComponent } from "../navbar/navbar.component";
 import { RouterLink } from '@angular/router';
 import { AppointmentService } from '../../services/Appointments/appointment.service';
 import { CommonModule } from '@angular/common';
-import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 import { Modal } from 'bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-provider-dashboard',
   standalone: true,
-  imports: [NavbarComponent, RouterLink, CommonModule, MatSnackBarModule, ReactiveFormsModule, FormsModule],
+  imports: [NavbarComponent, RouterLink, CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './provider-dashboard.component.html',
   styleUrl: './provider-dashboard.component.css'
 })
@@ -26,7 +26,7 @@ export class ProviderDashboardComponent implements AfterViewInit  {
   confirmationModal: any;
   selectedStatus = 'Scheduled';
 
-  constructor(private appointmentService: AppointmentService, private snackBar: MatSnackBar) {
+  constructor(private appointmentService: AppointmentService, private toastr: ToastrService) {
     this.GetAllAppointment();
   }
 
@@ -93,29 +93,13 @@ export class ProviderDashboardComponent implements AfterViewInit  {
       next: (res) => {
         this.isLoading = false;
         const message = typeof res === 'string' ? res : res.message;
-        this.snackBar.open(
-          message,
-          'Close',
-          {
-            duration: 3000,
-            verticalPosition: 'top',
-            horizontalPosition: 'right',
-          }
-        );
+        this.toastr.success(message, 'Success');
         this.GetAllAppointment();
         this.closeConfirmationModal(); 
       },
       error : (err)=>{
         this.isLoading = false;
-        this.snackBar.open(
-          err,
-          'Close',
-          {
-            duration: 3000,
-            verticalPosition: 'top',
-            horizontalPosition: 'right',
-          }
-        );
+        this.toastr.error(err, 'Error');
       }
     })
   }

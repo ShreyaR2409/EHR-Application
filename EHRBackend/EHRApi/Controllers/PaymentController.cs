@@ -24,7 +24,7 @@ namespace EHRApi.Controllers
             {
                 var options = new PaymentIntentCreateOptions
                 {
-                    Amount = request.Amount * 100, // Convert amount to cents
+                    Amount = request.Amount * 100, 
                     Currency = "usd",
                     PaymentMethodTypes = new List<string> { "card" }
                 };

@@ -1,52 +1,73 @@
 <app-navbar></app-navbar>
 <div class="container mt-4">
-  <div *ngIf="isLoading" class="loader-overlay">
-    <div class="spinner-border text-primary" role="status">
+  <div class="loader-overlay" *ngIf="isLoading">
+    <div class="spinner-border" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
   </div>
 
-  <button routerLink="/AddAppointmentPatient">Add Appointment</button>
-  <h4 class="text-center mb-4">Appointment List</h4>
-  <div *ngIf="appointments.length === 0 && !isLoading" class="alert alert-warning text-center">
+  <div class="form-heading col text-center p-2 mb-3 bg-light">
+    <h4 class="text-center m-3" style="color: rgb(235, 88, 4);">Appointment List</h4>
+  </div>
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="form-group d-flex align-items-center">
+      <label for="statusFilter" class="mr-2 mb-0">Select Status:</label> &nbsp;
+      <select id="statusFilter" class="form-control w-50" [(ngModel)]="selectedStatus" (change)="filterAppointments()">
+        <option value="">All</option>
+        <option value="Scheduled">Schedule</option>
+        <option value="Completed">Completed</option>
+        <option value="Cancelled">Cancelled</option>
+      </select>
+    </div>
+    <button routerLink="/AddAppointmentPatient" type="button" class="btn btn-outline-info">Add Appointment</button>
+  </div>
+
+  <div *ngIf="filteredAppointments.length === 0 && !isLoading" class="alert alert-warning text-center">
     No Appointment Found
   </div>
-  <table class="table table-striped" *ngIf="appointments.length > 0">
-    <thead>
-      <tr>
-        <th>Sr No.</th>
-        <th>Provider Name</th>
-        <th>Appointment Date</th>
-        <th>Appointment Time</th>
-        <th>Chief Complaint</th>
-        <th>Status</th>
-        <th>Fee</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let appointment of appointments; let i = index">
-        <td>{{ i + 1 }}</td>
-        <td>Dr. {{ appointment.firstName  }} {{ appointment.lastName  }}</td>
-        <td>{{ appointment.appointmentDate | date:'mediumDate' }}</td>
-        <td>{{ appointment.appointmentTime  }}</td>
-        <td>{{ appointment.chiefComplaint }}</td>
-        <td>
-          <span [ngClass]="getStatusClass(appointment.appointmentStatus)">
-            {{ appointment.appointmentStatus }}
-          </span>
-        </td>
-        <td>{{ appointment.fee | currency }}</td>
-        <td>
-          <button class="btn btn-primary btn-sm" (click)="openEditModal(appointment)">Edit</button>&nbsp;
-          <button class="btn btn-warning btn-sm" (click)="openConfirmationModal(appointment)">Cancel</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+
+  <div class="row" *ngIf="appointments.length > 0">
+    <div class="col-md-6 col-lg-4 mb-4" *ngFor="let appointment of filteredAppointments; let i = index">
+      <div class="card h-100 shadow-lg border-0">
+        <div class="card-header border text-center">
+          <h5 class="mb-0">{{ appointment.firstName }} {{ appointment.lastName }}</h5>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <strong>Date:</strong> {{ appointment.appointmentDate | date:'mediumDate' }}
+            </li>
+            <li class="list-group-item">
+              <strong>Time:</strong> {{ appointment.appointmentTime }}
+            </li>
+            <li class="list-group-item">
+              <strong>Complaint:</strong> {{ appointment.chiefComplaint }}
+            </li>
+            <li class="list-group-item">
+              <strong>Status:</strong>
+              <span [ngClass]="getStatusClass(appointment.appointmentStatus)">
+                {{ appointment.appointmentStatus }}
+              </span>
+            </li>
+            <li class="list-group-item">
+              <strong>Fee:</strong> {{ appointment.fee | currency }}
+            </li>
+          </ul>
+        </div>
+      <div class="card-footer d-flex justify-content-between" *ngIf="appointment.appointmentStatus == 'Scheduled' ">
+        <button type="button" class="btn btn-outline-success" (click)="openEditModal(appointment)">Edit</button>&nbsp;
+        <button type="button" class="btn btn-outline-danger" (click)="openConfirmationModal(appointment)">Cancel</button>
+      </div>
+      <div class="card-footer d-flex justify-content-around" *ngIf="appointment.appointmentStatus == 'Completed' ">
+        <button type="button" class="btn btn-outline-warning" [routerLink]="['/GoToAppointment', appointment.id]">View</button>      </div>
+    </div>
+  </div>
+</div>
 </div>
 
-<div class="modal fade" id="editAppointmentModal" tabindex="-1" aria-labelledby="editAppointmentModalLabel" aria-hidden="true" *ngIf="isModalOpen">
+<div class="modal fade" id="editAppointmentModal" tabindex="-1" aria-labelledby="editAppointmentModalLabel"
+  aria-hidden="true" *ngIf="isModalOpen">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -57,19 +78,23 @@
         <form (ngSubmit)="saveChanges()">
           <div class="mb-3">
             <label for="appointmentDate" class="form-label">Appointment Date</label>
-            <input type="date" id="appointmentDate" class="form-control" [(ngModel)]="selectedAppointment.formattedAppointmentDate" name="appointmentDate"  [value]="formattedAppointmentDate" required />
+            <input type="date" id="appointmentDate" class="form-control"
+              [(ngModel)]="selectedAppointment.formattedAppointmentDate" name="appointmentDate"
+              [value]="formattedAppointmentDate" [min]="minDate"  (change)="onDateChange($event)" />
           </div>
           <div class="mb-3">
             <label for="appointmentTime" class="form-label">Appointment Time</label>
-            <input type="time" id="appointmentTime" class="form-control" [(ngModel)]="selectedAppointment.appointmentTime" name="appointmentTime" required />
+            <input type="time" id="appointmentTime" class="form-control"
+              [(ngModel)]="selectedAppointment.appointmentTime" name="appointmentTime" required />
           </div>
-          <div class="mb-3"> 
+          <div class="mb-3">
             <label for="chiefComplaint" class="form-label">Chief Complaint</label>
-            <textarea id="chiefComplaint" class="form-control" [(ngModel)]="selectedAppointment.chiefComplaint" name="chiefComplaint" rows="3" required></textarea>
+            <textarea id="chiefComplaint" class="form-control" [(ngModel)]="selectedAppointment.chiefComplaint"
+              name="chiefComplaint" rows="3" required></textarea>
           </div>
           <div class="mb-3 text-center">
-            <button type="submit" class="btn btn-primary">Save Changes</button>
-            <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+            <button type="submit" class="btn btn-outline-success">Save Changes</button>&nbsp;
+            <button type="button" class="btn btn-outline-secondary" (click)="closeModal()">Cancel</button>
           </div>
         </form>
       </div>
@@ -77,7 +102,8 @@
   </div>
 </div>
 
-<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -88,8 +114,8 @@
         <p>Are you sure you want to cancel this appointment?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" (click)="confirmCancelAppointment()">Yes</button>
-        <button type="button" class="btn btn-secondary" (click)="closeConfirmationModal()">No</button>
+        <button type="button" class="btn btn-outline-danger" (click)="confirmCancelAppointment()">Yes</button>
+        <button type="button" class="btn btn-outline-secondary" (click)="closeConfirmationModal()">No</button>
       </div>
     </div>
   </div>

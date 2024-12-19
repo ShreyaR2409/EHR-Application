@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import{Modal} from 'bootstrap';
 import {NavbarComponent} from '../navbar/navbar.component'; 
 import { AuthService } from '../../services/Auth/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
@@ -15,13 +16,14 @@ import { AuthService } from '../../services/Auth/auth.service';
 
 export class ProfileComponent {
   username: string;
+  isLoading = false;
   todayDate = new Date().toISOString().split('T')[0]; 
   user: any = {
     FirstName: '',
     LastName: '',
     Email: '',
     UserTypeId: 0,
-    // Dob: '',
+    Dob: '',
     PhoneNumber: '',
     Address: '',
     Pincode: '',
@@ -30,7 +32,7 @@ export class ProfileComponent {
     ProfileImage: null,
   };
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,private toastr: ToastrService) {
     this.username = sessionStorage.getItem('username') ?? '';
     this.getUser();
   }
@@ -43,13 +45,10 @@ export class ProfileComponent {
 
   get formattedDob(): string {
     if (this.user.Dob) {
-      const date = new Date(this.user.Dob);
-      const year = date.getFullYear();
-      const month = ('0' + (date.getMonth() + 1)).slice(-2);
-      const day = ('0' + date.getDate()).slice(-2); 
-      return `${year}-${month}-${day}`;
+      const date = new Date(this.user.Dob); 
+      return date.toISOString().split('T')[0]; 
     }
-    return '';
+    return this.user.dob;
   }
 
   toggleEditMode() {
@@ -68,13 +67,17 @@ export class ProfileComponent {
   }
 
   updateProfile() {
+    this.isLoading = true;
     const formData = new FormData();
     formData.append('FirstName', this.user.FirstName);
     formData.append('LastName', this.user.LastName);
     formData.append('Email', this.user.Email);
     formData.append('UserTypeId', this.user.UserTypeId.toString());
-    // const dob = this.formattedDob || '';
-    // formData.append('Dob', this.user.dob);
+    if (this.user.dob) {
+      formData.append('Dob', this.user.dob); // Use the selected date if it exists
+    } else {
+      formData.append('Dob', this.user.Dob); // Use the current API value for Dob if no new value is provided
+    }
     formData.append('PhoneNumber', this.user.PhoneNumber);
     formData.append('Address', this.user.Address);
     formData.append('City', this.user.City);
@@ -89,7 +92,9 @@ export class ProfileComponent {
 
     this.authService.updateUser(this.user.UserId, formData).subscribe(
       (response) => {
-        console.log('Profile updated successfully', response);
+        // console.log('Profile updated successfully', response);
+        this.isLoading = false;
+        this.toastr.success('Profile updated successfully', 'Success');
         this.getUser();
         const modalElement = document.getElementById('editProfileModal');
         if (modalElement) {
@@ -100,11 +105,12 @@ export class ProfileComponent {
         }
       },
       (error) => {
+        this.isLoading = false;
         console.error('Error updating profile', error);
       }
     );
   }
-
+ 
   Logout() {
     this.authService.logoutUser();
   }

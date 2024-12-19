@@ -7,7 +7,7 @@ import { AppointmentService } from '../../services/Appointments/appointment.serv
 import { Router } from '@angular/router';
 import { environment } from '../../environment';
 import { StripeService } from '../../services/Stripe/stripe.service';
-
+import { ToastrService } from 'ngx-toastr';
 declare var Stripe: any;
 
 @Component({
@@ -27,8 +27,8 @@ export class AddAppointmentPatientComponent implements OnInit {
   minDate: string = '';
   minTime: string = '';
   specialisations: any[] = [];
-  selectedSpecialisation: any = null;  
-
+  selectedSpecialisation: any = null;
+  timeMin : string = ''; 
   stripe: any;
   elements: any;
   card: any;
@@ -37,7 +37,8 @@ export class AddAppointmentPatientComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private appointmentService: AppointmentService,
-    private stripeService: StripeService
+    private stripeService: StripeService,
+    private toastr: ToastrService
   ) {
     this.getProviderList();
   }
@@ -70,6 +71,34 @@ export class AddAppointmentPatientComponent implements OnInit {
     ChiefComplaint: new FormControl("", [Validators.required]),
     Fee: new FormControl(this.VisitingCharge, [Validators.required]),
   });
+
+  onDateChange(event: any) {
+    const selectedDate = event.target.value;
+    const today = new Date().toISOString().split('T')[0]; 
+
+    if (selectedDate === today) {
+      // If today is selected, set the time min to current time
+      const currentTime = new Date();
+      const hours = String(currentTime.getHours()).padStart(2, '0');
+      const minutes = String(currentTime.getMinutes()).padStart(2, '0');
+      this.timeMin = `${hours}:${minutes}`;
+    } else {
+      this.timeMin = '00:00'; 
+    }
+  }
+
+
+  isTimeValid(): boolean {
+    const selectedDate = new Date(this.AppointmentForm.value.AppointmentDate!);
+    const today = new Date();
+    if (selectedDate.toDateString() === today.toDateString()) {
+      const selectedTime = this.AppointmentForm.value.AppointmentTime!;
+      const currentTime = today.getHours() + today.getMinutes() / 60;
+      const selectedTimeValue = parseInt(selectedTime.split(':')[0]) + parseInt(selectedTime.split(':')[1]) / 60;
+      return selectedTimeValue > currentTime + 1;
+    }
+    return true;
+  }
 
   // Get all providers
   getProviderList() {
@@ -120,61 +149,74 @@ export class AddAppointmentPatientComponent implements OnInit {
       this.VisitingCharge = selectedProvider.visitingCharge;
       this.AppointmentForm.get('Fee')?.setValue(this.VisitingCharge);
     } else {
-      this.VisitingCharge = 0;  
+      this.VisitingCharge = 0;
       this.AppointmentForm.get('Fee')?.setValue(this.VisitingCharge);
     }
   }
 
   async onSubmit() {
-    console.log(this.PatientId);
-    console.log(this.AppointmentForm.value);
-    if (this.AppointmentForm.invalid || this.isLoading) return;
-    this.isLoading = true;
-    const feeAmount = this.AppointmentForm.get('Fee')?.value;
-    try {
-      const paymentIntent = await this.stripeService.createPaymentIntent(feeAmount);
-      const { error, paymentIntent: confirmedPaymentIntent } = await this.stripe.confirmCardPayment(
-        paymentIntent?.client_secret,
-        {
-          payment_method: {
-            card: this.card,
-            billing_details: {
-              name: 'Test User',
-              email: 'test@example.com',
-              address: { line1: '123 Main St', city: 'Test City', postal_code: '12345' }
+    if (this.AppointmentForm.valid) {
+      console.log(this.PatientId);
+      console.log(this.AppointmentForm.value);
+      if (this.AppointmentForm.invalid || this.isLoading) return;
+      this.isLoading = true;
+      const feeAmount = this.AppointmentForm.get('Fee')?.value;
+      try {
+        const paymentIntent = await this.stripeService.createPaymentIntent(feeAmount);
+        const { error, paymentIntent: confirmedPaymentIntent } = await this.stripe.confirmCardPayment(
+          paymentIntent?.client_secret,
+          {
+            payment_method: {
+              card: this.card,
+              billing_details: {
+                name: 'Test User',
+                email: 'test@example.com',
+                address: { line1: '123 Main St', city: 'Test City', postal_code: '12345' }
+              }
             }
           }
+        );
+        if (error) {
+          console.error(error);
+          this.isLoading = false;
+          // alert('Payment failed: ' + error.message);
+          this.toastr.error('Payment failed: ' + error.message, 'Error');
+
+        } else if (confirmedPaymentIntent.status === 'succeeded') {
+          this.bookAppointment();
+        } else {
+          this.isLoading = false;
+          // alert('Payment failed');
+          this.toastr.error('Payment failed', 'Error');
+
         }
-      );
-      if (error) {
+      } catch (error) {
         console.error(error);
+        // alert('Error processing payment');
+        this.toastr.error('Error processing payment', 'Error');
         this.isLoading = false;
-        alert('Payment failed: ' + error.message);
-      } else if (confirmedPaymentIntent.status === 'succeeded') {
-        this.bookAppointment();
-      } else {
-        this.isLoading = false;
-        alert('Payment failed');
       }
-    } catch (error) {
-      console.error(error);
-      alert('Error processing payment');
-      this.isLoading = false;
+    }
+    else {
+      this.AppointmentForm.markAllAsTouched();
     }
   }
 
 
   bookAppointment() {
-    console.log('Appointment booked');
-    this.isLoading = false;
-    alert('Appointment successfully booked!');
     this.appointmentService.addAppointment(this.AppointmentForm.value).subscribe({
       next: (res) => {
-        console.log(res);
-        alert(res);
+        this.isLoading = false;
+        if (res.status == 400) {
+          this.toastr.error(res.message, 'Error');
+        }
+       else{
+        this.toastr.success(res.message, 'Success');
+        this.router.navigate(['/PatientDashboard']);
+       }
       },
       error: (err) => {
-        alert(err);
+        this.toastr.error(err.message, 'Error');
       }
     })
   }

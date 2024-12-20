@@ -92,7 +92,6 @@ export class ProfileComponent {
 
     this.authService.updateUser(this.user.UserId, formData).subscribe(
       (response) => {
-        // console.log('Profile updated successfully', response);
         this.isLoading = false;
         this.toastr.success('Profile updated successfully', 'Success');
         this.getUser();

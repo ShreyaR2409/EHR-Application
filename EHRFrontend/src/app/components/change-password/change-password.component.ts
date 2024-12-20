@@ -17,6 +17,7 @@ export class ChangePasswordComponent {
   confirmPassword: string = '';
   passwordsMismatch: boolean = false;
   invalidPassword: boolean = false;
+  isLoading = false;
   userId: string = sessionStorage.getItem('id') || ''; 
   constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) {}
 
@@ -49,16 +50,14 @@ export class ChangePasswordComponent {
       NewPassword: this.newPassword
     };
     
-
+    this.isLoading =  true;
     this.authService.changePassword(requestBody).subscribe(
       response => {
-        // alert('Password changed successfully');
+        this.isLoading = false;
         this.toastr.success('Password changed successfully', 'Success');
-
-        // this.router.navigate(['/profile']);
       },
       error => {
-        // alert('Error: ' + error.message);
+        this.isLoading = false;
         this.toastr.error(error.message, 'Error');
 
       }

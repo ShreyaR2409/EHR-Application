@@ -12,6 +12,7 @@ import { AuthGuard } from './guard/auth.guard';
 import { AddAppointmentComponent } from './components/add-appointment/add-appointment.component';
 import { AddAppointmentPatientComponent } from './components/add-appointment-patient/add-appointment-patient.component';
 import { GoToAppointmentComponent } from './components/go-to-appointment/go-to-appointment.component';
+import { ChatComponent } from './components/chat/chat.component';
 export const routes: Routes = [
     {
         path: 'landing',
@@ -70,6 +71,10 @@ export const routes: Routes = [
         path: 'GoToAppointment/:id',
         component: GoToAppointmentComponent,
         canActivate: [AuthGuard]
+    },
+    {
+        path : 'chat/:receiverId',
+        component: ChatComponent
     },
     {
         path: '',

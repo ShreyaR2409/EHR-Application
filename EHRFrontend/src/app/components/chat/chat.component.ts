@@ -1,44 +1,68 @@
-import { Component, OnInit } from '@angular/core';
-import { ChatService } from '../../services/Chats/chat.service';
+import { Component, inject, OnInit } from '@angular/core';
+import { initializeApp } from 'firebase/app';
+import { getDatabase, ref, set, onValue, child, push } from 'firebase/database';
+import { firebaseConfig } from '../../firebase-config';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { ActivatedRoute } from '@angular/router';
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [FormsModule , CommonModule],
+  imports: [FormsModule, CommonModule, NavbarComponent],
   templateUrl: './chat.component.html',
-  styleUrl: './chat.component.css'
+  styleUrls: ['./chat.component.css'],
 })
-
 export class ChatComponent implements OnInit {
+  private route = inject(ActivatedRoute);
+  receiverId: string = '';
+  message: string = '';
   messages: any[] = [];
-  newMessage: string = '';
-  patientId = 'patient1';
-  providerId = 'provider1';
+  senderId: string = '';
+  receiver: string = '';
 
-  constructor(private chatService: ChatService) {}
+  sendMessage(receiverId: string, message: string): void {
+    const messageRef = ref(db, 'messages/' + receiverId + sessionStorage.getItem('id'));
+    const newMessageRef = push(messageRef);
+    set(newMessageRef, {
+      senderId: sessionStorage.getItem('id'),
+      message: message,
+      timestamp: Date.now(),
+    });
 
-  ngOnInit(): void {
-    this.loadMessages();
+    const SmessageRef = ref(db, 'messages/' + sessionStorage.getItem('id') + receiverId);
+    const SnewMessageRef = push(SmessageRef);
+    set(SnewMessageRef, {
+      receiverId: receiverId,
+      message: message,
+      timestamp: Date.now(),
+    });
   }
 
-  loadMessages(): void {
-    this.chatService
-      .getChatHistory(this.patientId, this.providerId)
-      .subscribe((messages: any) => (this.messages = messages));
+  listenForMessages(receiverId: string): void {
+    const messageRef = ref(db, 'messages/' + sessionStorage.getItem('id') + receiverId);
+    onValue(messageRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        this.messages = Object.values(data).sort((a: any, b: any) => a.timestamp - b.timestamp);
+      }
+    });
   }
 
-  sendMessage(): void {
-    if (this.newMessage.trim()) {
-      const message = {
-        sender: this.patientId,
-        receiver: this.providerId,
-        message: this.newMessage,
-      };
-      this.chatService.sendMessage(message).subscribe(() => {
-        this.messages.push(message);
-        this.newMessage = '';
-      });
-    }
+  ngOnInit() {
+    this.senderId = sessionStorage.getItem('id') || ''; 
+    this.route.paramMap.subscribe((params) => {
+      this.receiver = params.get('receiverId')!;
+      this.receiverId = this.receiver; 
+      console.log(this.receiver);  
+      console.log("Receiver ID:", this.receiver);
+      console.log("Sender ID:", this.senderId);
+      this.listenForMessages(this.receiver); 
+      this.listenForMessages(this.senderId); 
+    });
   }
 }

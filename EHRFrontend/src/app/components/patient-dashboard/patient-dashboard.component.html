@@ -15,7 +15,7 @@
       <label for="statusFilter" class="mr-2 mb-0">Select Status:</label> &nbsp;
       <select id="statusFilter" class="form-control w-50" [(ngModel)]="selectedStatus" (change)="filterAppointments()">
         <option value="">All</option>
-        <option value="Scheduled">Schedule</option>
+        <option value="Scheduled">Scheduled</option>
         <option value="Completed">Completed</option>
         <option value="Cancelled">Cancelled</option>
       </select>
@@ -29,7 +29,7 @@
 
   <div class="row" *ngIf="appointments.length > 0">
     <div class="col-md-6 col-lg-4 mb-4" *ngFor="let appointment of filteredAppointments; let i = index">
-      <div class="card h-100 shadow-lg border-0">
+      <div class="card h-100 shadow-lg border-0 d-flex flex-column">
         <div class="card-header border text-center">
           <h5 class="mb-0">{{ appointment.firstName }} {{ appointment.lastName }}</h5>
         </div>
@@ -55,16 +55,26 @@
             </li>
           </ul>
         </div>
-      <div class="card-footer d-flex justify-content-between" *ngIf="appointment.appointmentStatus == 'Scheduled' ">
-        <button type="button" class="btn btn-outline-success" (click)="openEditModal(appointment)">Edit</button>&nbsp;
-        <button type="button" class="btn btn-outline-danger" (click)="openConfirmationModal(appointment)">Cancel</button>
+
+        <div class="card-footer d-flex justify-content-between" *ngIf="appointment.appointmentStatus == 'Scheduled' ">
+          <button type="button" class="btn btn-outline-success" (click)="openEditModal(appointment)">Edit</button>&nbsp;
+          <button type="button" class="btn btn-outline-danger" (click)="openConfirmationModal(appointment)">Cancel</button>
+        </div>
+
+        <div class="card-footer d-flex justify-content-around" *ngIf="appointment.appointmentStatus == 'Completed' ">
+          <button type="button" class="btn btn-outline-warning" [routerLink]="['/GoToAppointment', appointment.id]">View</button>
+        </div>
+
+        <div class="card-footer mt-auto" *ngIf="appointment.appointmentStatus == 'Scheduled'">
+          <button [routerLink]="['/chat', appointment.providerId]" class="btn btn-outline-primary w-100">Chat</button>
+        </div>
       </div>
-      <div class="card-footer d-flex justify-content-around" *ngIf="appointment.appointmentStatus == 'Completed' ">
-        <button type="button" class="btn btn-outline-warning" [routerLink]="['/GoToAppointment', appointment.id]">View</button>      </div>
     </div>
   </div>
 </div>
-</div>
+
+<!-- Modal sections remain unchanged -->
+
 
 <div class="modal fade" id="editAppointmentModal" tabindex="-1" aria-labelledby="editAppointmentModalLabel"
   aria-hidden="true" *ngIf="isModalOpen">
@@ -80,7 +90,7 @@
             <label for="appointmentDate" class="form-label">Appointment Date</label>
             <input type="date" id="appointmentDate" class="form-control"
               [(ngModel)]="selectedAppointment.formattedAppointmentDate" name="appointmentDate"
-              [value]="formattedAppointmentDate" [min]="minDate"  (change)="onDateChange($event)" />
+              [value]="formattedAppointmentDate" [min]="minDate" (change)="onDateChange($event)" />
           </div>
           <div class="mb-3">
             <label for="appointmentTime" class="form-label">Appointment Time</label>

@@ -8,6 +8,7 @@ import { environment } from './environment';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideMessaging, getMessaging } from '@angular/fire/messaging';
 import { authInterceptor } from './interceptor/auth.interceptor';
+import { provideAuth, getAuth } from '@angular/fire/auth';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideHttpClient(withInterceptors([authInterceptor])), provideAnimationsAsync(),
@@ -15,10 +16,12 @@ export const appConfig: ApplicationConfig = {
       timeOut: 3000,
       positionClass: 'toast-top-right',
       preventDuplicates: true,
-      progressBar: true,
+      progressBar: true, 
       easing: 'ease-in-out',
       easeTime: 300,
-    }),provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideMessaging(() => getMessaging())
+    }),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideMessaging(() => getMessaging()),
+    provideAuth(() => getAuth()),
   ]
 };

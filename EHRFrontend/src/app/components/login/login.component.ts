@@ -95,7 +95,11 @@ export class LoginComponent {
       this.authService.verifyOtp(otpData).subscribe({
         next: (res) => {
           this.isLoading = false;
-          this.toastr.success('OTP Verified Successfully!', 'Success');
+          // this.toastr.success('OTP Verified Successfully!', 'Success');
+          if(res.status == 404){
+          this.toastr.error(res.message, 'Error');
+          }
+          this.toastr.success(res.message, 'Success ');
           this.authService.loadCurrentUser();
           this.closeOtpModal();
         },

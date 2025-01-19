@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar> -->
 <div class="container mt-4">
   <!-- Loader Spinner -->
   <div class="loader-overlay" *ngIf="isLoading">
@@ -32,7 +32,7 @@
     <div class="form-row mb-3">
       <div class="col-md-6 form-group">
         <label for="appointmentdate">Appointment Date</label>
-        <input type="date" id="appointmentdate" class="form-control" formControlName="AppointmentDate" [min]="minDate"  (change)="onDateChange($event)">
+        <input type="date" id="appointmentdate" class="form-control" formControlName="AppointmentDate" [min]="TodayDate"  (change)="onDateChange($event)">
         <small class="text-danger" *ngIf="AppointmentForm.get('AppointmentDate')?.invalid && AppointmentForm.get('AppointmentDate')?.touched">
           Appointment Date is required
         </small>

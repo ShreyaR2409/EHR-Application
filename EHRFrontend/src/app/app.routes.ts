@@ -13,6 +13,75 @@ import { AddAppointmentComponent } from './components/add-appointment/add-appoin
 import { AddAppointmentPatientComponent } from './components/add-appointment-patient/add-appointment-patient.component';
 import { GoToAppointmentComponent } from './components/go-to-appointment/go-to-appointment.component';
 import { ChatComponent } from './components/chat/chat.component';
+// export const routes: Routes = [
+//     {
+//         path: 'landing',
+//         component: LandingComponent
+//     },
+//     {
+//         path: 'Login',
+//         component: LoginComponent
+//     },
+//     {
+//         path: 'ProviderRegistration',
+//         component: ProviderRegistrationComponent,
+//         // canActivate: [AuthGuard]
+//     },
+//     {
+//         path : 'PatientRegistration',
+//         component: PatientRegistrationComponent,
+//         // canActivate: [AuthGuard]
+//     },
+//     {
+//         path : 'PatientDashboard',
+//         component: PatientDashboardComponent,
+//         canActivate: [AuthGuard]
+//     },
+//     {
+//         path : 'ProviderDashboard',
+//         component: ProviderDashboardComponent,
+//         canActivate: [AuthGuard]
+//     },
+//     {
+//         path: 'Navbar',
+//         component: NavbarComponent,
+//         canActivate: [AuthGuard]
+//     },
+//     {
+//         path : 'Profile',
+//         component: ProfileComponent,
+//         canActivate: [AuthGuard]
+//     },
+//     {
+//         path: 'ChangePassword',
+//         component: ChangePasswordComponent,
+//         canActivate: [AuthGuard]
+//     },
+//     {
+//         path: 'AddAppointment',
+//         component: AddAppointmentComponent,
+//         canActivate: [AuthGuard]
+//     },
+//     {
+//         path: 'AddAppointmentPatient',
+//         component: AddAppointmentPatientComponent,
+//         canActivate: [AuthGuard]
+//     },
+//     {
+//         path: 'GoToAppointment/:id',
+//         component: GoToAppointmentComponent,
+//         canActivate: [AuthGuard]
+//     },
+//     {
+//         path : 'chat/:receiverId',
+//         component: ChatComponent
+//     },
+//     {
+//         path: '',
+//         component: LandingComponent
+//     }
+// ];
+
 export const routes: Routes = [
     {
         path: 'landing',
@@ -24,60 +93,54 @@ export const routes: Routes = [
     },
     {
         path: 'ProviderRegistration',
-        component: ProviderRegistrationComponent,
-        // canActivate: [AuthGuard]
+        component: ProviderRegistrationComponent
     },
     {
-        path : 'PatientRegistration',
-        component: PatientRegistrationComponent,
-        // canActivate: [AuthGuard]
-    },
-    {
-        path : 'PatientDashboard',
-        component: PatientDashboardComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path : 'ProviderDashboard',
-        component: ProviderDashboardComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'Navbar',
-        component: NavbarComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path : 'Profile',
-        component: ProfileComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'ChangePassword',
-        component: ChangePasswordComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'AddAppointment',
-        component: AddAppointmentComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'AddAppointmentPatient',
-        component: AddAppointmentPatientComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'GoToAppointment/:id',
-        component: GoToAppointmentComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path : 'chat/:receiverId',
-        component: ChatComponent
+        path: 'PatientRegistration',
+        component: PatientRegistrationComponent
     },
     {
         path: '',
-        component: LandingComponent
+        component: LandingComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: '',
+        component: NavbarComponent, // Shared layout
+        canActivate: [AuthGuard],
+        children: [
+            {
+                path: 'PatientDashboard',
+                component: PatientDashboardComponent
+            },
+            {
+                path: 'ProviderDashboard',
+                component: ProviderDashboardComponent
+            },
+            {
+                path: 'Profile',
+                component: ProfileComponent
+            },
+            {
+                path: 'ChangePassword',
+                component: ChangePasswordComponent
+            },
+            {
+                path: 'AddAppointment',
+                component: AddAppointmentComponent
+            },
+            {
+                path: 'AddAppointmentPatient',
+                component: AddAppointmentPatientComponent
+            },
+            {
+                path: 'GoToAppointment/:id',
+                component: GoToAppointmentComponent
+            },
+            {
+                path: 'chat/:receiverId',
+                component: ChatComponent
+            }
+        ]
     }
 ];

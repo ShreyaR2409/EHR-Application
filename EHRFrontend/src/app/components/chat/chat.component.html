@@ -1,30 +1,43 @@
-<app-navbar></app-navbar>
-<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+<div class="d-flex justify-content-center align-items-center" >
   <div class="container-fluid">
     <div class="row justify-content-center">
-      <div class="col-md-6 col-lg-5 chat-container bg-light rounded shadow-lg" style="height: 90%; display: flex; flex-direction: column; padding: 0;">
+      <div class="col-md-6 col-lg-5 chat-container bg-light rounded shadow-lg" style="display: flex; flex-direction: column; padding: 0;">
         
-        <!-- Chat Box -->
+        <!-- Chat Messages -->
         <div class="chat-box flex-grow-1 p-3" style="max-height: 70vh; overflow-y: auto;">
           <div *ngFor="let msg of messages" class="message mb-3">
-            <div class="d-flex" [ngClass]="{'justify-content-end': msg.senderId === senderId, 'justify-content-start': msg.senderId !== senderId}">
-              <div class="message-bubble p-3 rounded" 
-                   [ngClass]="{'bg-sender text-white': msg.senderId === senderId, 'bg-receiver text-dark': msg.senderId !== senderId}">
+            <div 
+              class="d-flex" 
+              [ngClass]="{'justify-content-end': msg.senderId === senderId, 'justify-content-start': msg.senderId !== senderId}"
+            >
+              <div 
+                class="message-bubble p-3 rounded" 
+                [ngClass]="{'bg-sender': msg.senderId === senderId, 'bg-receiver': msg.senderId !== senderId}"
+              >
                 <span>{{ msg.message }}</span>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- Input Box -->
         <div class="message-input p-3 bg-white border-top">
-          <div class="form-row align-items-center">
-            <div class="col-8">
-              <textarea [(ngModel)]="message" class="form-control" rows="2" placeholder="Type your message"></textarea>
-            </div>
-
-            <div class="col-auto">
-              <button (click)="sendMessage(receiverId, message)" class="btn send-btn" [disabled]="!message.trim()">Send</button>
-            </div>
+          <div class="input-group">
+            <textarea 
+              [(ngModel)]="message" 
+              class="form-control" 
+              rows="1" 
+              placeholder="Type your message"
+              (keydown.enter)="sendMessage()"
+              style="resize: none;"
+            ></textarea>
+            <button 
+              (click)="sendMessage()" 
+              class="btn btn-primary ms-2" 
+              [disabled]="!message.trim()"
+            >
+              Send
+            </button>
           </div>
         </div>
       </div>

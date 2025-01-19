@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NavbarComponent } from '../navbar/navbar.component';
 import { AuthService } from '../../services/Auth/auth.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -10,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-add-appointment',
   standalone: true,
-  imports: [NavbarComponent, ReactiveFormsModule, CommonModule],
+  imports: [ ReactiveFormsModule, CommonModule],
   templateUrl: './add-appointment.component.html',
   styleUrl: './add-appointment.component.css'
 })
@@ -25,7 +24,7 @@ export class AddAppointmentComponent implements OnInit {
   minDate: string = '';
   minTime: string = '';
   timeMin : string = ''; 
-
+  TodayDate = new Date().toISOString().split('T')[0];
   constructor(private router: Router,private authService: AuthService, private appointmentService: AppointmentService,  private toastr: ToastrService) {
     this.getPatientList();
   }
